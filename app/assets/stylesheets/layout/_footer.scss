@@ -1,1 +1,41 @@
 // Your footer style
+.footer {
+  color: #C6C5B9;
+  font-size: 12px;
+  font-weight: lighter;
+  position: absolute;
+  bottom: 0;
+  margin: 0 auto;
+  width: 100%;
+  height: 150px;
+}
+.footer-left {
+  padding: 27px 0 0 0px;
+}
+.footer-logo img {
+  width: 30px;
+  margin-top: 20px;
+  padding-bottom: 10px;
+}
+.footer-copyright {
+  font-size: 10px;
+}
+.footer-links {
+  padding: 40px 0 0 0;
+  p:hover{
+    color: #61D095;
+  }
+}
+.footer-icons {
+  padding: 68px 140px 0 130px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  li {
+    list-style-type: none;
+  }
+  li:hover {
+    color: #61D095;
+  }
+}

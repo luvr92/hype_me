@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829131025) do
+ActiveRecord::Schema.define(version: 20160830152727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20160829131025) do
   end
 
   create_table "event_artists", force: :cascade do |t|
-    t.integer  "event_id"
     t.integer  "artist_id"
+    t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_event_artists_on_artist_id", using: :btree
@@ -39,15 +39,15 @@ ActiveRecord::Schema.define(version: 20160829131025) do
   end
 
   create_table "events", force: :cascade do |t|
+    t.text     "title"
     t.integer  "club_id"
-    t.float    "price"
-    t.string   "purchase_url"
+    t.string   "price"
     t.string   "address"
-    t.datetime "starts_at"
-    t.datetime "ends_at"
+    t.time     "starts_at"
+    t.time     "ends_at"
     t.text     "description"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["club_id"], name: "index_events_on_club_id", using: :btree
   end
 

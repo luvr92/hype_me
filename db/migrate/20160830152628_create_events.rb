@@ -5,8 +5,8 @@ class CreateEvents < ActiveRecord::Migration[5.0]
       t.references :club, foreign_key: true
       t.string :price
       t.string :address
-      t.time :starts_at
-      t.time :ends_at
+      t.datetime :starts_at
+      t.datetime :ends_at
       t.text :description
 
       t.timestamps

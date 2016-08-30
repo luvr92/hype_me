@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
+
+
+gem "coffee-rails"
+gem "gmaps4rails"
+gem 'geocoder'
 gem 'rails', '5.0.0.1'
 gem 'puma'
 gem 'pg'
@@ -28,3 +33,6 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end

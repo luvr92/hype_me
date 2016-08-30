@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'nokogiri'
 
+
 current_year = Date.today.year
 # p current_year
 current_month = Date.today.month
@@ -30,4 +31,52 @@ end
 
 id_s.flatten!
 
-p id_s
+
+
+# id_s.each do |event_id|
+html_event = open("https://www.residentadvisor.net/event.aspx?862446")
+event_html = Nokogiri::HTML(html_event)
+event_attributes = {}
+event_html.search("#detail").each do |info|
+  date = info.at("ul li a[href]").text.to_s
+
+  hours = info.at("ul li").text.to_s
+  hours = hours.scan(/(\d\d\D\d\d\s\D\s\d\d\D\d\d)/)
+  hours.flatten!
+  hours = hours.join("")
+
+  venue = info.at("ul li:nth-child(2) a[href]").text.to_s
+
+  venue_address_element = info.at("ul li:nth-child(2)").children.select { |child| child.is_a?(Nokogiri::XML::Text) }.first
+  if venue_address_element
+    venue_address = venue_address_element.content.strip
+  end
+
+  price = info.at("ul li:nth-child(3)").text.to_s
+  price = price.scan(/(\d+)/)
+  price.flatten!
+  price = price.join("")
+
+  p venue
+  p hours
+  p date
+  p venue_address
+  p price
+
+end
+
+event_html.search("#sectionHead").each do |info|
+  event_title = info.at("h1").text.to_s
+  p event_title
+end
+
+
+
+
+
+
+
+
+
+
+

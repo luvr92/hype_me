@@ -115,3 +115,6 @@ namespace :resident_advisor do
     evento.save
   end
 end
+
+# rake resident_advisor:list
+# noglob rake resident_advisor:import[862446] in the square brackets u have to put an event id

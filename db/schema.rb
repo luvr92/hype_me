@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(version: 20160830152727) do
     t.integer  "club_id"
     t.string   "price"
     t.string   "address"
-    t.time     "starts_at"
-    t.time     "ends_at"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

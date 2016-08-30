@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
+require 'time'
 # require 'pry-byebug'
 
 
@@ -39,7 +40,7 @@ id_s.each do |event_id|
 
   event_html.search("#detail").each do |info|
 
-    date = info.at("ul li a[href]").text.to_s #DATE
+    # date = info.at("ul li a[href]").text.to_s #DATE
 
     hours = info.at("ul li").text.to_s # OPENING AND CLOSING HOURS
     hours = hours.scan(/(\d\d\D\d\d\s\D\s\d\d\D\d\d)/)
@@ -47,7 +48,9 @@ id_s.each do |event_id|
     hours = hours.join("")
     hours = hours.split(" - ")
     starts = hours[0]
+    starts = Time.parse(starts)
     ends = hours[1]
+    ends = Time.parse(ends)
 
     venue = info.at("ul li:nth-child(2) a.cat-rev") # VENUE NAME
     if venue == nil
@@ -68,9 +71,9 @@ id_s.each do |event_id|
 
 
     p venue
-    p starts
-    p ends
-    p date
+    p starts.class
+    p ends.class
+    # p date
     p venue_address
     p price
 

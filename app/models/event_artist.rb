@@ -1,4 +1,4 @@
 class EventArtist < ApplicationRecord
-  belongs_to :event
   belongs_to :artist
+  belongs_to :event
 end

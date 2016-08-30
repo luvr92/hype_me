@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
+require 'pry-byebug'
 
 
 current_year = Date.today.year
@@ -48,7 +49,10 @@ id_s.each do |event_id|
     hours.flatten!
     hours = hours.join("")
 
-    venue = info.at("ul li:nth-child(2) a[href]").text.to_s
+    venue = info.at("ul li:nth-child(2) a.cat-rev").text.to_s
+    if venue == nil
+      venue = info.at("ul li:nth-child(2)").children.select { |child| child.is_a?(Nokogiri::XML::Text) }.first.text.to_s
+    end
 
     venue_address_element = info.at("ul li:nth-child(2)").children.select { |child| child.is_a?(Nokogiri::XML::Text) }.first
     if venue_address_element
@@ -56,9 +60,10 @@ id_s.each do |event_id|
     end
 
     price = info.at("ul li:nth-child(3)").text.to_s
-    price = price.scan(/(\d+\W\d+)/)
-    price.flatten!
-    price = price.join("")
+    # price = price.scan(/(\d+\W\d+)/)
+    # price.flatten!
+    # price = price.join("")
+    price = price.gsub("/", " ")
 
     hours = hours.split(" - ")
     starts = hours[0]

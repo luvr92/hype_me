@@ -1,24 +1,16 @@
 require 'open-uri'
 require 'nokogiri'
-require 'pry-byebug'
+# require 'pry-byebug'
 
 
 current_year = Date.today.year
-# p current_year
 current_month = Date.today.month
-# p current_month
 current_day = Date.today.day
-# p current_day
-
-# https://www.residentadvisor.net/events.aspx?ai=13&v=month&mn=8&yr=2016&dy=30
-# https://www.residentadvisor.net/events.aspx?ai=13&v=day&mn=8&yr=2016&dy=30
 
 html_file = open("https://www.residentadvisor.net/events.aspx?ai=13&v=day&mn=#{current_month}&yr=#{current_year}&dy=#{current_day}")
 html_doc = Nokogiri::HTML(html_file)
 
-# html_doc.search('.bbox').each do |element|
-#   puts element.text
-# end
+# SCRAPING THE DAILY EVENTS' IDS
 
 id_s = []
 
@@ -35,39 +27,45 @@ end
 
 id_s.flatten!
 
-
+# SCRAPING FOR EACH EVENT'S ATTRIBUTES
 
 id_s.each do |event_id|
   html_event = open("https://www.residentadvisor.net/event.aspx?#{event_id}")
   event_html = Nokogiri::HTML(html_event)
-  event_attributes = {}
-  event_html.search("#detail").each do |info|
-    date = info.at("ul li a[href]").text.to_s
 
-    hours = info.at("ul li").text.to_s
+  event_attributes = {}
+
+  # SCRAPING FOR DATE , START AND END TIME , VENUE NAME , VENUE ADDRESS
+
+  event_html.search("#detail").each do |info|
+
+    date = info.at("ul li a[href]").text.to_s #DATE
+
+    hours = info.at("ul li").text.to_s # OPENING AND CLOSING HOURS
     hours = hours.scan(/(\d\d\D\d\d\s\D\s\d\d\D\d\d)/)
     hours.flatten!
     hours = hours.join("")
+    hours = hours.split(" - ")
+    starts = hours[0]
+    ends = hours[1]
 
-    venue = info.at("ul li:nth-child(2) a.cat-rev").text.to_s
+    venue = info.at("ul li:nth-child(2) a.cat-rev") # VENUE NAME
     if venue == nil
       venue = info.at("ul li:nth-child(2)").children.select { |child| child.is_a?(Nokogiri::XML::Text) }.first.text.to_s
+    else
+      venue = venue.text.to_s
     end
 
+    # VENUE ADDRESS
     venue_address_element = info.at("ul li:nth-child(2)").children.select { |child| child.is_a?(Nokogiri::XML::Text) }.first
     if venue_address_element
       venue_address = venue_address_element.content.strip
     end
 
-    price = info.at("ul li:nth-child(3)").text.to_s
-    # price = price.scan(/(\d+\W\d+)/)
-    # price.flatten!
-    # price = price.join("")
+    price = info.at("ul li:nth-child(3)").text.to_s # PRICE
     price = price.gsub("/", " ")
 
-    hours = hours.split(" - ")
-    starts = hours[0]
-    ends = hours[1]
+
 
     p venue
     p starts
@@ -78,16 +76,30 @@ id_s.each do |event_id|
 
   end
 
+  # SCRAPING FOR EVENT'S TITLE
+
   event_html.search("#sectionHead").each do |info|
     event_title = info.at("h1").text.to_s
     p event_title
   end
 
+  # SCRAPING FOR EVENT'S LINE-UP
 
   event_html.search("#event-item").each do |info|
     event_line_up = info.at("div:nth-child(3) p").text.to_s
     event_line_up = event_line_up.gsub("\r\n", ",").split(",")
     p event_line_up
+  end
+
+  # SCRAPING FOR EVENT'S DESCRIPTION
+
+  event_html.search(".left").each do |info|
+    event_description = info.at("p:nth-child(3)").text.to_s
+    event_description.gsub!("\n",'')
+    event_description.gsub!("\r",'')
+    event_description.gsub!("\t",'')
+    event_description = event_description.strip
+    p event_description
   end
 end
 

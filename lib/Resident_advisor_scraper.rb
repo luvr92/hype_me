@@ -48,9 +48,9 @@ id_s.each do |event_id|
     hours = hours.join("")
     hours = hours.split(" - ")
     starts = hours[0]
-    starts = Time.parse(starts)
+    starts = DateTime.parse(starts)
     ends = hours[1]
-    ends = Time.parse(ends)
+    ends = DateTime.parse(ends)
 
     venue = info.at("ul li:nth-child(2) a.cat-rev") # VENUE NAME
     if venue == nil
@@ -83,7 +83,7 @@ id_s.each do |event_id|
 
   event_html.search("#sectionHead").each do |info|
     event_title = info.at("h1").text.to_s
-    p event_title
+    p event_title.class
   end
 
   # SCRAPING FOR EVENT'S LINE-UP
@@ -102,7 +102,7 @@ id_s.each do |event_id|
     event_description.gsub!("\r",'')
     event_description.gsub!("\t",'')
     event_description = event_description.strip
-    p event_description
+    p event_description.class
   end
 end
 

@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'nokogiri'
 require 'time'
-# require 'pry-byebug'
+require 'pry-byebug'
 
 
 namespace :resident_advisor do
@@ -57,9 +57,9 @@ namespace :resident_advisor do
     hours = hours.join("")
     hours = hours.split(" - ")
     starts = hours[0]
-    starts = Time.parse(starts)
+    starts = DateTime.parse(starts)
     ends = hours[1]
-    ends = Time.parse(ends)
+    ends = DateTime.parse(ends)
 
     venue = info.at("ul li:nth-child(2) a.cat-rev") # VENUE NAME
     if venue == nil
@@ -109,7 +109,9 @@ namespace :resident_advisor do
     event_description.gsub!("\t",'')
     event_description = event_description.strip
       #p event_description
-    Club.create(name: venue, address: venue_address)
-    Event.create(title: event_title, price: price, starts_at: starts, ends_at: ends, address: venue_address, description: event_description)
+    club = Club.create(name: venue, address: venue_address)
+    # binding.pry
+    evento = Event.new(title: event_title, club: club, price: price, starts_at: starts, ends_at: ends, address: venue_address, description: event_description)
+    evento.save
   end
 end

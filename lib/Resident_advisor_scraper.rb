@@ -70,19 +70,26 @@ id_s.each do |event_id|
 
 
     p venue
-    p starts.class
-    p ends.class
+    p starts
+    p ends
     # p date
     p venue_address
     p price
 
   end
 
+
+  event_html.search(".flyer").each do |info|
+    event_flyer = info.at("a img[src]").values[0]
+    event_flyer = "https://www.residentadvisor.net" + event_flyer
+    p event_flyer
+  end
+
   # SCRAPING FOR EVENT'S TITLE
 
   event_html.search("#sectionHead").each do |info|
     event_title = info.at("h1").text.to_s
-    p event_title.class
+    p event_title
   end
 
   # SCRAPING FOR EVENT'S LINE-UP
@@ -101,7 +108,7 @@ id_s.each do |event_id|
     event_description.gsub!("\r",'')
     event_description.gsub!("\t",'')
     event_description = event_description.strip
-    p event_description.class
+    p event_description
   end
 end
 

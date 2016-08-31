@@ -1,7 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
 require 'time'
-require 'pry-byebug'
 
 
 namespace :resident_advisor do
@@ -110,7 +109,6 @@ namespace :resident_advisor do
     event_description = event_description.strip
       #p event_description
     club = Club.create(name: venue, address: venue_address)
-    # binding.pry
     evento = Event.new(title: event_title, club: club, price: price, starts_at: starts, ends_at: ends, address: venue_address, description: event_description)
     evento.save
   end

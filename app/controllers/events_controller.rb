@@ -8,4 +8,11 @@ class EventsController < ApplicationController
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
   end
+
+
+  private
+
+  def event_params
+    params.require(:event).permit(:title, :club_id, :price, :address, :starts_at, :ends_at, :description)
+  end
 end

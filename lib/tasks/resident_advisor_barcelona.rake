@@ -1,17 +1,17 @@
 require 'open-uri'
 require 'nokogiri'
 require 'time'
-require 'pry-byebug'
 
 
-namespace :resident_advisor do
+
+namespace :resident_advisor_barcelona do
   task list: :environment do
     # TODO: list all the ra ids
     current_year = Date.today.year
     current_month = Date.today.month
     current_day = Date.today.day
 
-    html_file = open("https://www.residentadvisor.net/events.aspx?ai=13&v=day&mn=#{current_month}&yr=#{current_year}&dy=#{current_day}")
+    html_file = open("https://www.residentadvisor.net/events.aspx?ai=20&v=day&mn=#{current_month}&yr=#{current_year}&dy=#{current_day}")
     html_doc = Nokogiri::HTML(html_file)
 
     # SCRAPING THE DAILY EVENTS' IDS
@@ -86,6 +86,9 @@ namespace :resident_advisor do
     # p venue_address
     # p price
 
+    info = event_html.search(".flyer").first
+    event_flyer = info.at("a img[src]").values[0]
+    event_flyer = "https://www.residentadvisor.net" + event_flyer
 
     # SCRAPING FOR EVENT'S TITLE
 
@@ -110,11 +113,11 @@ namespace :resident_advisor do
     event_description = event_description.strip
       #p event_description
     club = Club.create(name: venue, address: venue_address)
-    # binding.pry
-    evento = Event.new(title: event_title, club: club, price: price, starts_at: starts, ends_at: ends, address: venue_address, description: event_description)
+
+    evento = Event.new(remote_photo_url: event_flyer, title: event_title, club: club, price: price, starts_at: starts, ends_at: ends, address: venue_address, description: event_description)
     evento.save
   end
 end
 
-# rake resident_advisor:list
-# noglob rake resident_advisor:import[862446] in the square brackets u have to put an event id
+# rake resident_advisor_barcelona:list
+# noglob rake resident_advisor_barcelona:import[862446] in the square brackets u have to put an event id

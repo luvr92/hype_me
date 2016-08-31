@@ -1,5 +1,5 @@
 $('#hype-btn').click(function() {
-  debugger
+
   var startPos;
   var geoOptions = {
     enableHighAccuracy: false
@@ -9,6 +9,7 @@ $('#hype-btn').click(function() {
     startPos = position;
     document.getElementById('startLat').innerHTML = startPos.coords.latitude;
     document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+    console.log(startPos);
   };
   var geoError = function(error) {
     console.log('Error occurred. Error code: ' + error.code);

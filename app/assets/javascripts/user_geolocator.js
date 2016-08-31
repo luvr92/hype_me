@@ -1,15 +1,10 @@
 $('#hype-btn').click(function() {
-
-  var startPos;
   var geoOptions = {
-    enableHighAccuracy: false
+    enableHighAccuracy: true
   }
 
   var geoSuccess = function(position) {
-    startPos = position;
-    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-    console.log(startPos);
+    window.location.href = "/events?lat=" + position.coords.latitude + "&lng="+ position.coords.longitude
   };
   var geoError = function(error) {
     console.log('Error occurred. Error code: ' + error.code);

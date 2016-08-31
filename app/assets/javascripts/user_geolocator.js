@@ -1,4 +1,5 @@
-$('.hype-btn').click = function() {
+$('#hype-btn').click(function() {
+  debugger
   var startPos;
   var geoOptions = {
     enableHighAccuracy: false
@@ -19,4 +20,4 @@ $('.hype-btn').click = function() {
   };
 
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
-};
+});

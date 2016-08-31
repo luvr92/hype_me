@@ -1,7 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
 require 'time'
-# require 'pry-byebug'
 
 
 current_year = Date.today.year

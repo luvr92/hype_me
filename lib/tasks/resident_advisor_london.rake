@@ -117,6 +117,7 @@ namespace :resident_advisor_london do
     club = Club.create(name: venue, address: venue_address)
 
     evento = Event.new(remote_photo_url: event_flyer, title: event_title, club: club, price: price, starts_at: starts, ends_at: ends, address: venue_address, description: event_description)
+
     evento.save
   end
 end

@@ -4,7 +4,7 @@ require 'time'
 
 
 
-namespace :resident_advisor_london do
+namespace :resident_advisor_events do
   task list: :environment do
     Event.destroy_all
     Club.destroy_all
@@ -51,33 +51,33 @@ namespace :resident_advisor_london do
           hours = info.at("ul li").text.to_s # OPENING AND CLOSING HOURS
           hours = hours.scan(/(\d\d\D\d\d\s\D\s\d\d\D\d\d)/)
           hours.flatten!
-          hours = hours.join("")
+          @hours = hours.join("")
 
 
-          venue = info.at("ul li:nth-child(2) a.cat-rev") # VENUE NAME
-          if venue == nil
-            venue = info.at("ul li:nth-child(2)").children.select { |child| child.is_a?(Nokogiri::XML::Text) }.first.text.to_s
+          @venue = info.at("ul li:nth-child(2) a.cat-rev") # VENUE NAME
+          if @venue == nil
+            @venue = info.at("ul li:nth-child(2)").children.select { |child| child.is_a?(Nokogiri::XML::Text) }.first.text.to_s
           else
-            venue = venue.text.to_s
+            @venue = @venue.text.to_s
           end
 
           # VENUE ADDRESS
           venue_address_element = info.at("ul li:nth-child(2)").children.select { |child| child.is_a?(Nokogiri::XML::Text) }.first
           if venue_address_element
-            venue_address = venue_address_element.content.strip
+            @venue_address = venue_address_element.content.strip
           end
 
           price = info.at("ul li:nth-child(3)").text.to_s # PRICE
-          price = price.gsub("/", " ")
+          @price = price.gsub("/", " ")
 
         end
 
 
         event_html.search(".flyer").each do |info|
-          event_flyer = info.at("a img[src]") # .values[0]
-          if event_flyer
-            event_flyer = event_flyer.values[0]
-            event_flyer = "https://www.residentadvisor.net" + event_flyer
+          @event_flyer = info.at("a img[src]") # .values[0]
+          if @event_flyer
+            @event_flyer = @event_flyer.values[0]
+            @event_flyer = "https://www.residentadvisor.net" + @event_flyer
           end
           # p event_flyer
         end
@@ -85,15 +85,15 @@ namespace :resident_advisor_london do
         # SCRAPING FOR EVENT'S TITLE
 
         event_html.search("#sectionHead").each do |info|
-          event_title = info.at("h1").text.to_s
+          @event_title = info.at("h1").text.to_s
           # p event_title
         end
 
         # SCRAPING FOR EVENT'S LINE-UP
 
         event_html.search("#event-item").each do |info|
-          event_line_up = info.at("div:nth-child(3) p").text.to_s
-          event_line_up = event_line_up.gsub("\r\n", ",").split(",")
+          @event_line_up = info.at("div:nth-child(3) p").text.to_s
+          @event_line_up = @event_line_up.gsub("\r\n", ",").split(",")
           # p event_line_up
         end
 
@@ -104,12 +104,13 @@ namespace :resident_advisor_london do
           event_description.gsub!("\n",'')
           event_description.gsub!("\r",'')
           event_description.gsub!("\t",'')
-          event_description = event_description.strip
+          @event_description = event_description.strip
           # p event_description
         end
-        club = Club.create(name: venue, address: venue_address)
 
-        evento = Event.new(remote_photo_url: event_flyer, title: event_title, club: club, price: price, opening_hours: hours, address: venue_address, description: event_description)
+
+        club = Club.create(name: @venue, address: @venue_address)
+        evento = Event.new(remote_photo_url: @event_flyer, title: @event_title, club: club, price: @price, opening_hours: @hours, address: @venue_address, description: @event_description)
 
         evento.save
       end

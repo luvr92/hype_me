@@ -51,11 +51,7 @@ namespace :resident_advisor_london do
           hours = hours.scan(/(\d\d\D\d\d\s\D\s\d\d\D\d\d)/)
           hours.flatten!
           hours = hours.join("")
-          hours = hours.split(" - ")
-          starts = hours[0]
-          starts = DateTime.parse(starts)
-          ends = hours[1]
-          ends = DateTime.parse(ends)
+
 
           venue = info.at("ul li:nth-child(2) a.cat-rev") # VENUE NAME
           if venue == nil
@@ -73,21 +69,15 @@ namespace :resident_advisor_london do
           price = info.at("ul li:nth-child(3)").text.to_s # PRICE
           price = price.gsub("/", " ")
 
-
-
-          # p venue
-          # p starts
-          # p ends
-          # p date
-          # p venue_address
-          # p price
-
         end
 
 
         event_html.search(".flyer").each do |info|
-          event_flyer = info.at("a img[src]").values[0]
-          event_flyer = "https://www.residentadvisor.net" + event_flyer
+          event_flyer = info.at("a img[src]") # .values[0]
+          if event_flyer
+            event_flyer = event_flyer.values[0]
+            event_flyer = "https://www.residentadvisor.net" + event_flyer
+          end
           # p event_flyer
         end
 
@@ -118,7 +108,7 @@ namespace :resident_advisor_london do
         end
         club = Club.create(name: venue, address: venue_address)
 
-        evento = Event.new(remote_photo_url: event_flyer, title: event_title, club: club, price: price, starts_at: starts, ends_at: ends, address: venue_address, description: event_description)
+        evento = Event.new(remote_photo_url: event_flyer, title: event_title, club: club, price: price, opening_hours: hours, address: venue_address, description: event_description)
 
         evento.save
       end

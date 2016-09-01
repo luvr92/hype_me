@@ -6,8 +6,8 @@ require 'time'
 
 namespace :resident_advisor_london do
   task list: :environment do
-    Club.destroy_all
     Event.destroy_all
+    Club.destroy_all
 
     cities = [13, 20, 34, 44] # London, Barcelona, Berlin, Paris
 

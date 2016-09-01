@@ -6,6 +6,8 @@ require 'time'
 
 namespace :resident_advisor_events do
   task list: :environment do
+    EventArtist.destroy_all
+    Artist.destroy_all
     Event.destroy_all
     Club.destroy_all
 
@@ -97,6 +99,8 @@ namespace :resident_advisor_events do
           # p event_line_up
         end
 
+
+
         # SCRAPING FOR EVENT'S DESCRIPTION
 
         event_html.search(".left").each do |info|
@@ -110,9 +114,17 @@ namespace :resident_advisor_events do
 
 
         club = Club.create(name: @venue, address: @venue_address)
-        evento = Event.new(remote_photo_url: @event_flyer, title: @event_title, club: club, price: @price, opening_hours: @hours, address: @venue_address, description: @event_description)
+        @evento = Event.new(remote_photo_url: @event_flyer, title: @event_title, club: club, price: @price, opening_hours: @hours, address: @venue_address, description: @event_description)
 
-        evento.save
+        # CREATING AN INSTANCE OF EVENT_ARTIST FOR EVERY ARTIST ATTENDING THE EVENT
+        @event_line_up.each do |artist|
+          unless Artist.exists?(name: artist)
+            @new_artist = Artist.create(name: artist)
+            @evento.event_artists.build(artist: @new_artist)
+          end
+        end
+
+        @evento.save
       end
     end
   end

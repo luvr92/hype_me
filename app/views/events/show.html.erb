@@ -1,24 +1,55 @@
-<div id="map" style="width: 100%; height: 400px;"></div>
+<div class="container">
+  <div class="club-name">
+    <h1>TRESOR</h1>
+  </div>
+</div>
 
-<script>
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      var styles = [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"color":"#000000"},{"lightness":13}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#144b53"},{"lightness":14},{"weight":1.4}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#08304b"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#0c4152"},{"lightness":5}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#0b434f"},{"lightness":25}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#000000"}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#0b3d51"},{"lightness":16}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#000000"}]},{"featureType":"transit","elementType":"all","stylers":[{"color":"#146474"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#021019"}]}];
+<div class="container padded text-center">
+  <div class="club-image">
+    <h1>**IMAGE**</h1>
+  </div>
+</div>
 
-      handler.buildMap({
-        provider: {
-          styles: styles
-        },
-        internal: { id: 'map' }
-      }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        handler.getMap().setZoom(14);
-      });
-    });
-  <% end %>
-<% end %>
-</script>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-xs-6">
+      <p>Köpenicker Str. 70, 10179 Berlin</p>
+      <%= link_to t("See map"), "#", class: "btn btn-warning" %>
+    </div>
+    <div class="col-xs-6">
+      <p>The cost is xxx:</p>
+      <%= link_to t("Buy tickets"), "#", class: "btn btn-warning" %>
+    </div>
+  </div>
+</div>
+
+<div class="container padded text-center">
+  <div class="row">
+    <div class="col-xs-6">
+      <p>LINE UP:</p>
+      <p>Lorem ipsum dolor sit amet,
+      consectetur adipisicing elit
+      Saepe delectus alias, nulla </p>
+      <%= link_to t("See full line up"), "#", class: "btn btn-warning" %>
+    </div>
+    <div class="col-xs-6">
+      <p>Opening Hours:</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="club-name">
+    <p>Description:</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quis iure, porro eveniet pariatur voluptate, a saepe similique aspernatur possimus officiis repudiandae ratione molestiae cumque soluta explicabo totam tenetur! Perspiciatis!</p>
+  </div>
+</div>
+
+
+<!-- Map partial: -->
+<%= render 'map' %>
+<!--...don't remove! -->
+
+<div class="container padded text-center">
+  <%= link_to t("Get directions"), "#", class: "btn btn-warning" %>
+</div>

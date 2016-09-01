@@ -1,21 +1,52 @@
-<div id="map" style="width: 1000%; height: 400px;"></div>
+<div class="club-name">
+  <h1>TRESOR</h1> <!-- insert club name -->
+</div>
 
-<script>
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
-  <% end %>
-<% end %>
-</script>
+<div class="container padded text-center">
+  <div class="club-image">
+    <h1>**IMAGE**</h1> <!-- insert club image -->
+  </div>
+</div>
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col-xs-6">
+      <p>Köpenicker Str. 70, 10179 Berlin</p> <!-- insert club address -->
+      <%= link_to t("See map"), "#", class: "show-cta-btn" %> <!-- hot link to map -->
+    </div>
+    <div class="col-xs-6">
+      <p>The cost is xxx:</p> <!-- insert ticket cost -->
+      <%= link_to t("Buy tickets"), "#", class: "show-cta-btn" %> <!-- link buy tickets -->
+    </div>
+  </div>
+</div>
+
+<div class="container padded text-center">
+  <div class="row">
+    <div class="col-xs-6">
+      <p>LINE UP:</p>
+      <p>Lorem ipsum dolor sit amet,  <!-- insert line up -->
+      consectetur adipisicing elit
+      Saepe delectus alias, nulla </p>
+      <%= link_to t("See full line up"), "#", class: "show-cta-btn" %> <!-- expand to see full line up / or a pop up page? -->
+    </div>
+    <div class="col-xs-6">
+      <p>Opening Hours:</p>
+      <p>xxxxx</p> <!-- insert opening hours -->
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="club-name">
+    <p>Description:</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quis iure, porro eveniet pariatur voluptate, a saepe similique aspernatur possimus officiis repudiandae ratione molestiae cumque soluta explicabo totam tenetur! Perspiciatis!</p> <!-- insert club description -->
+  </div>
+</div>
+
+<!-- Map partial: -->
+<%= render 'map' %>
+
+<div class="container padded text-center">
+  <%= link_to t("Get directions"), "#", class: "show-cta-btn" %> <!-- link to google maps api?? -->
+</div>

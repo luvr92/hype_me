@@ -1,12 +1,16 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
+  def index
+    @events = Event.near([params[:lat], params[:lng]], 50)
+    @event = @events.first
+    redirect_to event_path(@event)
+  end
 
   def show
+    @event = Event.find(params[:id])
 
-    @flats = Event.where.not(latitude: nil, longitude: nil)
-
-    @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+    @hash = Gmaps4rails.build_markers([ @event ]) do |event, marker|
       marker.lat event.latitude
       marker.lng event.longitude
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })

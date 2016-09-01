@@ -1,52 +1,66 @@
-<div class="club-name">
-  <h1>TRESOR</h1> <!-- insert club name -->
-</div>
-
-<div class="container padded text-center">
-  <div class="club-image">
-    <h1>**IMAGE**</h1> <!-- insert club image -->
+<!-- Event title -->
+<div class="container padded">
+  <div class="event-title">
+    <h1><%= @event.title %></h1>
   </div>
 </div>
 
+<!-- Event photo -->
+<div class="container padded">
+  <div class="event-photo">
+    <h1><%= cl_image_tag(@event.photo, crop: :fill) %></h1>
+  </div>
+</div>
+
+<!-- Event address -->
 <div class="container text-center">
   <div class="row">
     <div class="col-xs-6">
-      <p>Köpenicker Str. 70, 10179 Berlin</p> <!-- insert club address -->
-      <%= link_to t("See map"), "#", class: "show-cta-btn" %> <!-- hot link to map -->
+      <p><%= @event.address %></p>
+      <%= link_to t("View map"), "#", class: "show-cta-btn" %> <!-- hot link to map -->
     </div>
+<!-- Event price -->
     <div class="col-xs-6">
-      <p>The cost is xxx:</p> <!-- insert ticket cost -->
-      <%= link_to t("Buy tickets"), "#", class: "show-cta-btn" %> <!-- link buy tickets -->
+      <p><%= @event.price %></p>
+<!-- Link buy tickets: -->
+      <%= link_to t("Buy tickets"), "#", class: "show-cta-btn" %>
     </div>
   </div>
 </div>
 
+<!-- Event line-up -->
 <div class="container padded text-center">
   <div class="row">
     <div class="col-xs-6">
-      <p>LINE UP:</p>
-      <p>Lorem ipsum dolor sit amet,  <!-- insert line up -->
-      consectetur adipisicing elit
-      Saepe delectus alias, nulla </p>
-      <%= link_to t("See full line up"), "#", class: "show-cta-btn" %> <!-- expand to see full line up / or a pop up page? -->
+      <p>Line up:</p>
+      <ul>
+        <li>-    </li> <!-- Insert event line-up -->
+        <li>-    </li>
+        <li>-    </li>
+      </ul>
+      <%= link_to t("Full line up"), "#", class: "show-cta-btn" %> <!-- Expand to see full line up / or a pop up page?: -->
     </div>
+
+<!-- Event opening hours -->
     <div class="col-xs-6">
       <p>Opening Hours:</p>
-      <p>xxxxx</p> <!-- insert opening hours -->
+      <p><%= @event.opening_hours %></p>
     </div>
   </div>
 </div>
 
+<!-- Event description -->
 <div class="container">
   <div class="club-name">
     <p>Description:</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quis iure, porro eveniet pariatur voluptate, a saepe similique aspernatur possimus officiis repudiandae ratione molestiae cumque soluta explicabo totam tenetur! Perspiciatis!</p> <!-- insert club description -->
+    <p><%= @event.description %></p>
   </div>
 </div>
 
-<!-- Map partial: -->
+<!-- Map partial -->
 <%= render 'map' %>
 
+<!-- link to google maps api?? -->
 <div class="container padded text-center">
-  <%= link_to t("Get directions"), "#", class: "show-cta-btn" %> <!-- link to google maps api?? -->
+  <%= link_to t("Get directions"), "#", class: "show-cta-btn" %>
 </div>

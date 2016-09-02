@@ -8,7 +8,6 @@
 .wrapper {
   background-color: #333745;
 }
-
 .se-pre-con {
   position: fixed;
   left: 0px;
@@ -17,4 +16,7 @@
   height: 100%;
   z-index: 9999;
   background: url(Preloader_10.gif) center no-repeat #fff;
+}
+.home-container {
+  min-height: 46vh;
 }

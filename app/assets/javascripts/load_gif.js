@@ -8,3 +8,4 @@
     setTimeout(event, 3000);
     document.getElementById('hype-btn').click();
   });
+

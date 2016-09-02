@@ -18,6 +18,15 @@
   background: url(ripple.gif) center no-repeat #fff;
   background-color: #333745;
 }
-.home-container {
-  min-height: 46vh;
+// tablet/desktop only
+@media (min-width: 481px) {
+  .home-container {
+  min-height: 63vh;
+  }
+}
+// tablet/desktop only
+@media (max-width: 480px) {
+  .home-container {
+  min-height: 73vh;
+  }
 }

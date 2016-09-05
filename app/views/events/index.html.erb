@@ -107,14 +107,6 @@
             <%= link_to t("Get directions"), "#", class: "show-cta-btn" %>
           </div>
           <hr class= "orange-line-bottom" width="100%">
-          <div class="container text-center">
-            <%= link_to t("Next Event"), "#", class: "show-cta-btn", id: "next-event-button" %>
-          </div>
-          <hr class= "orange-line-bottom" width="100%">
-          <div class="container text-center">
-            <%= link_to t("Previous Event"), "#", class: "show-cta-btn", id: "prev-event-button" %>
-          </div>
-          <hr class= "orange-line-bottom" width="100%">
         </div>
       </div>
     <% else %>
@@ -223,17 +215,17 @@
             <%= link_to t("Get directions"), "#", class: "show-cta-btn" %>
           </div>
           <hr class= "orange-line-bottom" width="100%">
-          <div class="container text-center">
-            <%= link_to t("Next Event"), "#", class: "show-cta-btn", id: "next-event-button" %>
-          </div>
-          <hr class= "orange-line-bottom" width="100%">
-          <div class="container text-center">
-            <%= link_to t("Previous Event"), "#", class: "show-cta-btn", id: "prev-event-button" %>
-          </div>
-          <hr class= "orange-line-bottom" width="100%">
         </div>
       </div>
     <% end %>
   <% end %>
+  <div class="container text-center">
+    <%= link_to t("Next Event"), "#", class: "show-cta-btn", id: "next-event-button" %>
+  </div>
+  <hr class= "orange-line-bottom" width="100%">
+  <div class="container text-center">
+    <%= link_to t("Previous Event"), "#", class: "show-cta-btn", id: "prev-event-button" %>
+  </div>
+  <hr class= "orange-line-bottom" width="100%">
 </div>
 

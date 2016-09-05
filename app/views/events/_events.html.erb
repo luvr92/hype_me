@@ -46,10 +46,10 @@
             <!-- Buttons -->
             <div class="row">
               <div class="col-xs-6">
-                <%= link_to t("View map"), "#map-section", class: "show-cta-btn padded" %> <!-- Hot link to map -->
+                <%= link_to "View map", "#map-section-#{index}", class: "show-cta-btn js-scroll padded", data: { target: "#map-section-#{index}" } %> <!-- Hot link to map -->
               </div>
               <div class="col-xs-6">
-                <%= link_to t("Buy now"), "#", class: "show-cta-btn" %><!-- Link buy tickets: -->
+                <%= link_to "Buy now", "#", class: "show-cta-btn" %><!-- Link buy tickets: -->
               </div>
             </div>
           </div>
@@ -97,7 +97,7 @@
               </div>
             </div>
           </div>
-          <hr class= "orange-line-bottom" id= "map-section" width="100%">
+          <hr class= "orange-line-bottom" id="map-section-<%= index %>" width="100%">
           <!-- Map partial -->
           <%= render 'map', event: event, index: index %>
 

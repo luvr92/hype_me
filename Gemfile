@@ -38,4 +38,5 @@ end
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
   gem "rails-assets-hammerjs"
+  gem 'rails-assets-jquery.scrollTo'
 end

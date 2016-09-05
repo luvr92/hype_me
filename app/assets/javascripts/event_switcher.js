@@ -1,18 +1,19 @@
-$( document ).ready(function() {
-  setClass();
+$('#next-event-button').click(function() {
+  nextEvent();
+});
+
+$('#prev-event-button').click(function() {
+  previousEvent();
 });
 
 
 
 
 
-function setClass() {
-  $('.all-the-events div:first').addClass("active-event");
-};
 function nextEvent() {
-  $('.active-event').removeClass("active-event").next().addClass("active-event");
+  $('.active-event').removeClass("active-event").addClass("non-active-event").next().removeClass("non-active-event").addClass("active-event");
 };
 
 function previousEvent() {
-  $('.active-event').removeClass("active-event").prev().addClass("active-event");
+  $('.active-event').removeClass("active-event").addClass("non-active-event").next().removeClass("non-active-event").addClass("active-event");
 };

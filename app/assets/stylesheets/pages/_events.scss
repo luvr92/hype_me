@@ -14,8 +14,12 @@
   border-top: 1px solid #F89D33;
   margin: 25px 0 40px 0;
 }
-.orange-line-bottom {
+.orange-line-three {
   border-top: 1px solid #F89D33;
+  margin: 40px 0 25px 0;
+}
+.orange-line-bottom {
+  border-top: 2px solid #F89D33;
   margin: 40px 0 25px 0;
 }
 .green-line {
@@ -32,6 +36,7 @@
 .line-up-list {
   list-style-type: none;
   padding-left: 0;
+  font-weight: lighter;
 }
 .soundcloud-link {
   color: #F89D33;
@@ -58,6 +63,8 @@ em {
 }
 .event-description p {
   margin-bottom: 0;
+  font-weight: lighter;
+  font-size: 15px;
 }
 .map-container {
   padding-bottom: 40px;

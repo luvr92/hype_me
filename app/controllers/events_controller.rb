@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @events = Event.near([params[:lat], params[:lng]], 50)
+    @events = Event.near([params[:lat], params[:lng]], 50).first(10)
     # @event = @events.first
     # redirect_to event_path(@event)
   end

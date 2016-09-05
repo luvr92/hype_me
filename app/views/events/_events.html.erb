@@ -1,7 +1,7 @@
 <%= render 'shared/navbar_black' %>
 <div class="all-the-events">
   <% @events.each_with_index do |event, index| %>
-      <div class="<%= (index == 0) ? "active-event" : "non-active-event"%>" data-index="<%= index%>" data-lat="<%= event.latitude%>" data-lng="<%= event.longitude%>">
+      <div class="<%= (index == 0) ? "active-event" : "non-active-event"%>" id="displayed-event" data-index="<%= index%>" data-lat="<%= event.latitude%>" data-lng="<%= event.longitude%>">
         <!-- Event title -->
         <div class="container">
           <div class="row">

@@ -21,17 +21,23 @@ handler.buildMap({
 });
 
 $(document).ready(function() {
-  $('#next-event-button').click(function(e) {
-     console.log("coucou");
+  $('#next-event-button').click(function() {
     nextEvent();
   });
 
-  $('#prev-event-button').click(function(e) {
-     console.log("coucou");
+  $('#prev-event-button').click(function() {
     previousEvent();
   });
 });
 
+var displayedEvent = document.getElementById('displayed-event');
+var mc = new Hammer(displayedEvent);
+mc.on("swipeleft", function() {
+  nextEvent();
+});
+mc.on("swiperight", function() {
+  prevEvent();
+});
 
 function nextEvent() {
   var $nextEvent = $('.active-event').removeClass("active-event").addClass("non-active-event").next();

@@ -103,7 +103,7 @@
 
           <!-- link to google maps api?? -->
           <div class="container text-center">
-            <%= link_to t("Get directions"), "#", class: "show-cta-btn" %>
+            <%= link_to t("Get directions"), "https://www.google.com/maps/dir/#{@user_lat},#{@user_lng}/#{event.latitude},#{event.longitude}", target:"_blank", class: "show-cta-btn" %>
           </div>
           <hr class= "orange-line-bottom" width="100%">
         </div>
@@ -119,23 +119,7 @@
   <hr class= "orange-line-bottom" width="100%">
   </div>
 
-          <!-- link to google maps api?? -->
-          <div class="container text-center">
-            <%= link_to t("Get directions"), "https://www.google.com/maps/dir/#{@user_lat},#{@user_lng}/#{event.latitude},#{event.longitude}", target:"_blank", class: "show-cta-btn" %>
-          </div>
-          <hr class= "orange-line-bottom" width="100%">
-          <div class="container text-center">
-            <%= link_to t("Next Event"), "#", class: "show-cta-btn", id: "next-event-button" %>
-          </div>
-          <hr class= "orange-line-bottom" width="100%">
-          <div class="container text-center">
-            <%= link_to t("Previous Event"), "#", class: "show-cta-btn", id: "prev-event-button" %>
-          </div>
-          <hr class= "orange-line-bottom" width="100%">
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-</div>
+
+
 
 

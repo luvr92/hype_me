@@ -1,10 +1,16 @@
-$('#hype-btn').click(function() {
+$('#hype-btn').click(function(e) {
+  e.preventDefault();
+  var url = $(event.target).attr('href');
+
   var geoOptions = {
     enableHighAccuracy: true
   }
 
   var geoSuccess = function(position) {
-    window.location.href = "/events?lat=" + position.coords.latitude + "&lng="+ position.coords.longitude
+    $('.se-pre-con').removeClass('hidden');  // Display gif
+    setTimeout(function() {
+      $.getScript(url + "?lat=" + position.coords.latitude + "&lng="+ position.coords.longitude);
+    }, 3000);
   };
   var geoError = function(error) {
     console.log('Error occurred. Error code: ' + error.code);

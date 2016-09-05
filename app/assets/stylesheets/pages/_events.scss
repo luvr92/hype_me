@@ -69,18 +69,39 @@ em {
 .map-container {
   padding-bottom: 40px;
 }
-
-// tablet/desktop only
+.non-active-event {
+  display: none;
+}
+.sidebar-arrow-left {
+  position: absolute;
+  top: 550px;
+  left: 10px;
+  position: fixed;
+  font-size: 18px;
+  font-weight: lighter;
+  color: #EEEEEE;
+  list-style-type: none;
+}
+.fa-arrow-right:hover {
+    color: #F89D33;
+    text-decoration: none;
+}
+.fa-arrow-left:hover {
+    color: #F89D33;
+    text-decoration: none;
+}
+.sidebar-arrow-right {
+  position: absolute;
+  top: 550px;
+  right: 10px;
+  position: fixed;
+  font-size: 18px;
+  color: #EEEEEE;
+  font-weight: lighter;
+}
+ // tablet/desktop only
 @media (min-width: 481px) {
   .address-padding {
     padding: 0 50px;
   }
-}
-
-
-.active-event {
-
-}
-.non-active-event {
-  display: none;
 }

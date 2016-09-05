@@ -82,7 +82,7 @@
                     <i class="fa fa-headphones"></i>  Listen </em>
                   </li>
                 </ul><br>
-                <%= link_to t("Show full line up"), "#", class: "full-lineup-link" %> <!-- Expand to see full line up / or a pop up page?: -->
+                <%= link_to ("Show full line up"), "#", class: "full-lineup-link" %> <!-- Expand to see full line up / or a pop up page?: -->
               </div>
             </div>
           </div>
@@ -101,25 +101,21 @@
           <!-- Map partial -->
           <%= render 'map', event: event, index: index %>
 
-          <!-- link to google maps api?? -->
-          <div class="container text-center">
-            <%= link_to t("Get directions"), "https://www.google.com/maps/dir/#{@user_lat},#{@user_lng}/#{event.latitude},#{event.longitude}", target:"_blank", class: "show-cta-btn" %>
+          <!-- link to google maps directions -->
+          <div class="text-center">
+            <%= link_to ("Get directions"), "https://www.google.com/maps/dir/#{@user_lat},#{@user_lng}/#{event.latitude},#{event.longitude}", target:"_blank", class: "show-cta-btn" %>
           </div>
           <hr class= "orange-line-bottom" width="100%">
         </div>
       </div>
   <% end %>
-  <div class="container text-center">
-    <%= link_to t("Next Event"), "#", class: "show-cta-btn", id: "next-event-button" %>
+
+  <div class= "arrows">
+    <i><%= link_to (""), "#", class: "sidebar-arrow-right fa fa-arrow-right", id: "next-event-button" %></i>
+    <i><%= link_to (""), "#", class: "sidebar-arrow-left fa fa-arrow-left", id: "prev-event-button" %></i>
   </div>
-  <hr class= "orange-line-bottom" width="100%">
-  <div class="container text-center">
-    <%= link_to t("Previous Event"), "#", class: "show-cta-btn", id: "prev-event-button" %>
-  </div>
-  <hr class= "orange-line-bottom" width="100%">
+
 </div>
-
-
 
 
 

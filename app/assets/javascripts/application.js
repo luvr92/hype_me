@@ -3,4 +3,5 @@
 //= require bootstrap-sprockets
 //= require underscore
 //= require gmaps/google
+//= require hammerjs
 //= require_tree .

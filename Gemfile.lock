@@ -166,6 +166,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 5.0.0.1)
       sprockets-rails (>= 2.0.0)
+    rails-assets-hammerjs (2.0.8)
     rails-assets-underscore (1.8.3)
     rails-dom-testing (2.0.1)
       activesupport (>= 4.2.0, < 6.0)
@@ -254,6 +255,7 @@ DEPENDENCIES
   pry-rails
   puma
   rails (= 5.0.0.1)
+  rails-assets-hammerjs!
   rails-assets-underscore!
   redis
   sass-rails

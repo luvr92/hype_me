@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 
-
+gem "soundcloud"
 gem "coffee-rails"
 gem "gmaps4rails"
 gem 'geocoder'

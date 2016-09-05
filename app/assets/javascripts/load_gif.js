@@ -4,8 +4,12 @@
   // });
   $('#hype-btn').on('click', function(event) {
     event.preventDefault();
+    var url = $(event.target).attr('href');
     $('.se-pre-con').removeClass('hidden');
-    setTimeout(event, 3000);
-    document.getElementById('hype-btn').click();
+
+    setTimeout(function(){
+      window.location = url;
+    }, 3000);
+
   });
 

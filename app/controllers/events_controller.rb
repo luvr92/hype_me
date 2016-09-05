@@ -1,3 +1,5 @@
+require 'soundcloud'
+
 class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
@@ -15,6 +17,18 @@ class EventsController < ApplicationController
     #   marker.lng event.longitude
     #   # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     # end
+
+    # create a client object with your app credentials
+    client = Soundcloud.new(:client_id => ENV["SOUND_CLOUD_CLIENT_app_id"])
+
+    # get a tracks oembed data
+    # track_url = @profile.soundcloud_link
+    track_url = "https://soundcloud.com/garzygoesdeep/ride-on-time-club-edit"
+    embed_info = client.get('/oembed', :url => track_url)
+
+    # print the html for the player widget
+    @url_embed = embed_info['html']
+
   end
 
   private

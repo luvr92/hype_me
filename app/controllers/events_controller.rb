@@ -3,6 +3,8 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.near([params[:lat], params[:lng]], 50).first(10)
+    @user_lat = params[:lat]
+    @user_lng = params[:lng]
     # @event = @events.first
     # redirect_to event_path(@event)
   end

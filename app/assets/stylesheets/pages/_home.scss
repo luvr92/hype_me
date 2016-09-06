@@ -2,11 +2,20 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
-.intro-copy {
-  padding: 60px 0 90px 0;
-}
+
+
+ #home h1 {
+  font-family: "Avenir";
+  font-weight: bold;
+  font-size: 35px;
+  letter-spacing: -1px;
+  margin-top: 0px;
+  margin-bottom: 30px;
+  margin-top: -20px;
+ }
+
 .wrapper {
-  background-color: #333745;
+  // background-color: #333745;
 }
 .se-pre-con {
   position: fixed;
@@ -27,6 +36,14 @@
 // tablet/desktop only
 @media (max-width: 480px) {
   .home-container {
-  min-height: 73vh;
+    min-height: calc(100vh - 190px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .footer {
+    .fa {
+      font-size: 20px;
+    }
   }
 }

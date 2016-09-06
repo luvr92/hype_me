@@ -17,7 +17,7 @@ handler.buildMap({
   markers = handler.addMarkers(<%= raw [ { lng: @events.first.longitude, lat: @events.first.latitude }].to_json %>);
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
-  handler.getMap().setZoom(14);
+  handler.getMap().setZoom(17);
 });
 
 $(document).ready(function() {
@@ -58,7 +58,7 @@ function nextEvent() {
     markers = handler.addMarkers([{lat: lat, lng: lng}]);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
-    handler.getMap().setZoom(14);
+    handler.getMap().setZoom(17);
   });
 };
 
@@ -86,6 +86,6 @@ function previousEvent() {
     markers = handler.addMarkers([{lat: lat, lng: lng}]);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
-    handler.getMap().setZoom(14);
+    handler.getMap().setZoom(17);
   });
 };

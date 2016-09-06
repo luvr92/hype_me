@@ -1,105 +1,42 @@
+<style>
+  .bg-dark-blue {
+    background: #F4F4F4 !important;
+    padding-top: 70px;
+  }
+</style>
+
 <%= render 'shared/navbar_black' %>
 <div class="all-the-events">
   <% @events.each_with_index do |event, index| %>
     <div class="<%= (index == 0) ? "active-event" : "non-active-event"%>" id="displayed-event" data-index="<%= index%>" data-lat="<%= event.latitude%>" data-lng="<%= event.longitude%>">
 
-      <div class="container">
-
-        <div class="row">
-          <div class="col-xs-4">
-          </div>
-          <!-- Event title -->
-          <div class="col-xs-8">
-            <div class="event-title">
-              <h2><%= event.title %></h2>
-            </div>
-          </div>
-        </div>
-
-        <hr class= "orange-line-top" width="100%">
-
-        <!-- Event photo -->
+      <div id="event-infos">
+        <h2><%= event.title %></h2>
         <%= cl_image_tag(event.photo, crop: :fit, class: "event-photo") %>
-
-        <hr class= "green-line-top" width="100%">
-
-        <!-- Details -->
-        <div class="container text-center">
-          <div class="row infos">
-            <div class="col-xs-6 address-padding">
-              <!-- Club name -->
-              <p><%= event.club.name %></p>
-            </div>
-            <div class="col-xs-6">
-              <!-- Event opening hours -->
-              <p><%= event.opening_hours %></p>
-            </div>
-          </div>
-           <div class="row infos">
-            <div class="col-xs-6 address-padding">
-              <!-- Event address -->
-              <p><%= event.address %></p>
-            </div>
-            <div class="col-xs-6">
-              <!-- Event price -->
-              <p><%= event.price %></p>
-            </div>
-          </div>
-          <hr class= "green-line" width="100%">
-
-          <!-- Event line-up -->
-          <div class="container text-center">
-            <div class="row line-up-container">
-              <div class="col-xs-12">
-                <h4>Line up:</h4><br>
-                <ul class="infos line-up-list">
-                  <% event.event_artists.all.each do |eve_artist| %>
-                    <li class="line-up-artist">- <%= eve_artist.artist.name %> <br>
-                      <em class= "soundcloud-link">
-                      <i class="fa fa-headphones"></i>  Listen </em>
-                    </li>
-                  <% end %>
-                </ul><br>
-                <%= link_to ("Show full line up"), "#", class: "full-lineup-link" %> <!-- Expand to see full line up / or a pop up page?: -->
-              </div>
-          <!-- Buttons -->
-          <div class="row">
-            <div class="col-xs-6">
-              <!-- Hot link to map -->
-              <%= link_to "View map", "#map-section-#{index}", class: "show-cta-btn js-scroll padded", data: { target: "#map-section-#{index}" } %>
-            </div>
-            <div class="col-xs-6">
-              <!-- Link buy tickets: -->
-              <%= link_to "Buy now", "#", class: "show-cta-btn" %>
-            </div>
-          </div>
-        </div>
-        <hr class= "green-line" width="100%">
-
-        <!-- Event description -->
-        <div class="container text-center">
-          <div class="row event-description">
-            <div class="col-xs-12">
-              <h4>Description:</h4>
-              <p><%= event.description %></p>
-            </div>
-          </div>
-        </div>
-
-        <hr class= "green-line" id="map-section-<%= index %>" width="100%">
-
-        <!-- Map partial -->
+        <p><%= event.club.name %></p>
+        <p><%= event.address %></p>
+        <p><%= event.opening_hours %></p>
+        <p><%= event.price %></p>
+        <p><%= event.description %></p>
+      </div>
+      <div id="event-lineup">
+        <ul>
+          <% event.event_artists.all.each do |eve_artist| %>
+            <li class="line-up-artist">- <%= eve_artist.artist.name %> <br>
+              <em class= "soundcloud-link">
+              <i class="fa fa-headphones"></i>  Listen </em>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div id="event-map">
         <%= render 'map', event: event, index: index %>
-
-        <!-- Get directions -->
-        <div class="text-center">
+        <p>
           <%= link_to ("Get directions"), "https://www.google.com/maps/dir/#{@user_lat},#{@user_lng}/#{event.latitude},#{event.longitude}", target:"_blank", class: "show-cta-btn" %>
-        </div>
-
-        <hr class= "orange-line-bottom" width="100%">
-
+        </p>
       </div>
 
+      <%= render "shared/mobile_nav", index: index %>
     </div>
   <% end %>
 
@@ -110,6 +47,7 @@
   </div>
 
 </div>
+
 
 
 

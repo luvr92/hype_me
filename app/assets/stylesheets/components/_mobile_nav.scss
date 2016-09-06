@@ -1,0 +1,21 @@
+.mobile-navs {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  background: white;
+  align-items: center;
+  height: 100px;
+}
+.mobile-nav i {
+  font-size: 25px;
+  color: $orange;
+}
+.mobile-nav a p {
+  font-size: 15px;
+  color: $orange;
+  opacity: 0.5;
+  font-weight: lighter;
+}

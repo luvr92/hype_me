@@ -1,12 +1,12 @@
 #hype-btn {
   display: inline-block;
   text-align: center;
-  line-height: 45px;
+  line-height: 30px;
+
   color: white;
   background: #F89D33;
   border-radius: 50%;
-  height: 150px;
-  width: 150px;
+  width: 125px;
   border: 2px solid #F89D33;
   padding: 30px;
   transition: background 0.3s ease;
@@ -38,3 +38,12 @@
   border-color: #61D095;
   text-decoration: none;
 }
+#next-event-button:focus {
+  color: white;
+  text-decoration: none;
+}
+#prev-event-button:focus {
+  color: white;
+  text-decoration: none;
+}
+

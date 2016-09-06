@@ -52,13 +52,15 @@
 
     <% else %>
 
-      <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-hype-item navbar-hype-link" %>
+
 
     <% end %>
 
     <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "SIGN UP"), "#", class: "navbar-hype-item navbar-hype-button btn" %>
+
+
+    <input type="text" name="loco" class="search-box" placeholder="Insert a location">
+        <button class="navbar-hype-item navbar-hype-button btn" id="locat-search-btn">Search</button>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->

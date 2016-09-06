@@ -11,6 +11,24 @@
 }
 .navbar-hype-black {
   background: #040F0F;
+  border-bottom-color: #EEEEEE;
+  margin-bottom: 50px;
+}
+.navbar-hype-button-black {
+  margin-left: 10px;
+  padding: 0 20px;
+  border-radius: 20em;
+  line-height: 40px;
+  background: #040F0F;
+  color: #EEEEEE;
+  font-size: 12px;
+  letter-spacing: 3px;
+  border: 2px solid #EEEEEE;
+}
+.navbar-hype-button-black:hover {
+  color: #333745;
+  background: white;
+  border-color: white;
 }
 /* Optional class to fix the navbar on top */
 .navbar-hype-fixed {
@@ -19,11 +37,11 @@
   top: 0px;
   z-index: 1;
   width: 100%;
+  // border-bottom: 0.5px solid white;
 }
-
 /* Navbar logo */
 .navbar-hype-brand img {
-  width: 50px;
+  width: 35px;
 }
 
 /* Navbar right section (with form, links, button) */
@@ -49,6 +67,7 @@
   color: #333745;
   text-decoration: none;
 }
+
 
 /* Navbar right button */
 .navbar-hype-button {

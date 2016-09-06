@@ -1,115 +1,127 @@
 <%= render 'shared/navbar_black' %>
 <div class="all-the-events">
   <% @events.each_with_index do |event, index| %>
-      <div class="<%= (index == 0) ? "active-event" : "non-active-event"%> event-wrapper" data-index="<%= index%>" data-lat="<%= event.latitude%>" data-lng="<%= event.longitude%>">
-        <!-- Event title -->
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-4">
-            </div>
-            <div class="col-xs-8">
-              <div class="event-title">
-                <h2><%= event.title %></h2>
-              </div>
+    <div class="<%= (index == 0) ? "active-event" : "non-active-event"%>" id="displayed-event" data-index="<%= index%>" data-lat="<%= event.latitude%>" data-lng="<%= event.longitude%>">
+
+      <div class="container">
+
+        <div class="row">
+          <div class="col-xs-4">
+          </div>
+          <!-- Event title -->
+          <div class="col-xs-8">
+            <div class="event-title">
+              <h2><%= event.title %></h2>
             </div>
           </div>
-          <hr class= "orange-line-top" width="100%">
-
-          <!-- Event photo -->
-          <div class=" event-photo">
-            <%= cl_image_tag(event.photo, crop: :fill, class: "event-photo") %>
-          </div>
-          <hr class= "orange-line-two" width="100%">
-
-          <!-- Event address -->
-          <div class="container text-center">
-            <div class="row infos">
-              <div class="col-xs-6 address-padding">
-                <p><%= event.club.name %></p>
-              </div>
-              <div class="col-xs-6">
-                <!-- Event opening hours -->
-                <p><%= event.opening_hours %></p>
-              </div>
-            </div>
-             <div class="row infos">
-              <div class="col-xs-6 address-padding">
-                <!-- Event address -->
-                <p><%= event.address %></p>
-              </div>
-              <div class="col-xs-6">
-                <!-- Event price -->
-                <p><%= event.price %></p>
-              </div>
-            </div>
-
-            <!-- Buttons -->
-            <div class="row">
-              <div class="col-xs-6">
-                <%= link_to "View map", "#map-section-#{index}", class: "show-cta-btn js-scroll padded", data: { target: "#map-section-#{index}" } %> <!-- Hot link to map -->
-              </div>
-              <div class="col-xs-6">
-                <%= link_to "Buy now", "#", class: "show-cta-btn" %><!-- Link buy tickets: -->
-              </div>
-            </div>
-          </div>
-          <hr class= "green-line" width="100%">
-
-          <!-- Event line-up -->
-          <div class="container text-center">
-            <div class="row line-up-container">
-              <div class="col-xs-12">
-                <ul class="infos line-up-list">
-                  <h4>Line up:</h4><br>
-                  <li>- DJ Fresh <br>
-                    <em class= "soundcloud-link">
-                    <i class="fa fa-headphones"></i>  Listen </em>
-                  </li>
-                  <li>- DJ Cool <br>
-                    <em class= "soundcloud-link">
-                    <i class="fa fa-headphones"></i>  Listen </em>
-                  </li>
-                  <li>- DJ Gigi <br>
-                    <em class= "soundcloud-link">
-                    <i class="fa fa-headphones"></i>  Listen </em>
-                  </li>
-                  <li>- DJ Jor <br>
-                    <em class= "soundcloud-link">
-                    <i class="fa fa-headphones"></i>  Listen </em>
-                  </li>
-                  <li>- DJ Knox <br>
-                    <em class= "soundcloud-link">
-                    <i class="fa fa-headphones"></i>  Listen </em>
-                  </li>
-                </ul><br>
-                <%= link_to ("Show full line up"), "#", class: "full-lineup-link" %> <!-- Expand to see full line up / or a pop up page?: -->
-              </div>
-            </div>
-          </div>
-          <hr class= "green-line" width="100%">
-
-          <!-- Event description -->
-          <div class="container text-center">
-            <div class="row event-description">
-              <div class="col-xs-12">
-                <h4>Description:</h4>
-                <p><%= event.description %></p>
-              </div>
-            </div>
-          </div>
-          <hr class= "orange-line-bottom" id="map-section-<%= index %>" width="100%">
-          <!-- Map partial -->
-          <%= render 'map', event: event, index: index %>
-
-          <!-- link to google maps directions -->
-          <div class="text-center">
-            <%= link_to ("Get directions"), "https://www.google.com/maps/dir/#{@user_lat},#{@user_lng}/#{event.latitude},#{event.longitude}", target:"_blank", class: "show-cta-btn" %>
-          </div>
-          <hr class= "orange-line-bottom" width="100%">
         </div>
+
+        <hr class= "orange-line-top" width="100%">
+
+        <!-- Event photo -->
+        <%= cl_image_tag(event.photo, crop: :fit, class: "event-photo") %>
+
+        <hr class= "green-line-top" width="100%">
+
+        <!-- Details -->
+        <div class="container text-center">
+          <div class="row infos">
+            <div class="col-xs-6 address-padding">
+              <!-- Club name -->
+              <p><%= event.club.name %></p>
+            </div>
+            <div class="col-xs-6">
+              <!-- Event opening hours -->
+              <p><%= event.opening_hours %></p>
+            </div>
+          </div>
+           <div class="row infos">
+            <div class="col-xs-6 address-padding">
+              <!-- Event address -->
+              <p><%= event.address %></p>
+            </div>
+            <div class="col-xs-6">
+              <!-- Event price -->
+              <p><%= event.price %></p>
+            </div>
+          </div>
+          <!-- Buttons -->
+          <div class="row">
+            <div class="col-xs-6">
+              <!-- Hot link to map -->
+              <%= link_to "View map", "#map-section-#{index}", class: "show-cta-btn js-scroll padded", data: { target: "#map-section-#{index}" } %>
+            </div>
+            <div class="col-xs-6">
+              <!-- Link buy tickets: -->
+              <%= link_to "Buy now", "#", class: "show-cta-btn" %>
+            </div>
+          </div>
+        </div>
+
+        <hr class= "green-line" width="100%">
+
+        <!-- Event line-up -->
+        <div class="container text-center">
+          <div class="row line-up-container">
+            <div class="col-xs-12">
+              <ul class="infos line-up-list">
+                <h4>Line up:</h4><br>
+                <li>- DJ Fresh <br>
+                  <em class= "soundcloud-link">
+                  <i class="fa fa-headphones"></i>  Listen </em>
+                </li>
+                <li>- DJ Cool <br>
+                  <em class= "soundcloud-link">
+                  <i class="fa fa-headphones"></i>  Listen </em>
+                </li>
+                <li>- DJ Gigi <br>
+                  <em class= "soundcloud-link">
+                  <i class="fa fa-headphones"></i>  Listen </em>
+                </li>
+                <li>- DJ Jor <br>
+                  <em class= "soundcloud-link">
+                  <i class="fa fa-headphones"></i>  Listen </em>
+                </li>
+                <li>- DJ Knox <br>
+                  <em class= "soundcloud-link">
+                  <i class="fa fa-headphones"></i>  Listen </em>
+                </li>
+              </ul><br>
+              <%= link_to ("Show full line up"), "#", class: "full-lineup-link" %> <!-- Expand to see full line up / or a pop up page?: -->
+            </div>
+          </div>
+        </div>
+
+        <hr class= "green-line" width="100%">
+
+        <!-- Event description -->
+        <div class="container text-center">
+          <div class="row event-description">
+            <div class="col-xs-12">
+              <h4>Description:</h4>
+              <p><%= event.description %></p>
+            </div>
+          </div>
+        </div>
+
+        <hr class= "green-line" id="map-section-<%= index %>" width="100%">
+
+        <!-- Map partial -->
+        <%= render 'map', event: event, index: index %>
+
+        <!-- Get directions -->
+        <div class="text-center">
+          <%= link_to ("Get directions"), "https://www.google.com/maps/dir/#{@user_lat},#{@user_lng}/#{event.latitude},#{event.longitude}", target:"_blank", class: "show-cta-btn" %>
+        </div>
+
+        <hr class= "orange-line-bottom" width="100%">
+
       </div>
+
+    </div>
   <% end %>
 
+  <!-- Fixed page arrows -->
   <div class= "arrows">
     <i><%= link_to (""), "#", class: "sidebar-arrow-right fa fa-arrow-right", id: "next-event-button" %></i>
     <i><%= link_to (""), "#", class: "sidebar-arrow-left fa fa-arrow-left", id: "prev-event-button" %></i>

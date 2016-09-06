@@ -1,8 +1,7 @@
 require 'open-uri'
 require 'nokogiri'
 require 'time'
-
-
+require 'pry-byebug'
 
 namespace :resident_advisor_events do
   task list: :environment do
@@ -100,7 +99,6 @@ namespace :resident_advisor_events do
         end
 
 
-
         # SCRAPING FOR EVENT'S DESCRIPTION
 
         event_html.search(".left").each do |info|
@@ -112,6 +110,30 @@ namespace :resident_advisor_events do
           # p event_description
         end
 
+        # SCRAPING FOR SOUNDCLOUD DJ URL'S
+        dj_names = []
+
+        dj_names = event_html.css('div.left a').map { |link| link['href'] }
+        dj_names = dj_names[0...-1]
+
+
+        # ENTERING DJ RA PAGE
+
+        dj_names.map do |dj|
+          dj.gsub!("/dj/",'')
+        end
+
+        dj_names.each do |dj_url|
+          url = "https://www.residentadvisor.net/dj/#{dj_url}"
+          dj_html = Nokogiri::HTML(open(url))
+
+          soundcloud_div = dj_html.css("#SoundcloudPlaceholder").first
+          if soundcloud_div
+            @soundcloud_username = soundcloud_div.attributes['data-soundcloud-username'].text
+          else
+            @soundcloud_username = nil
+          end
+        end
 
         club = Club.create(name: @venue, address: @venue_address)
         @evento = Event.new(remote_photo_url: @event_flyer, title: @event_title, club: club, price: @price, opening_hours: @hours, address: @venue_address, description: @event_description)
@@ -119,7 +141,8 @@ namespace :resident_advisor_events do
         # CREATING AN INSTANCE OF EVENT_ARTIST FOR EVERY ARTIST ATTENDING THE EVENT
         @event_line_up.each do |artist|
           unless Artist.exists?(name: artist)
-            @new_artist = Artist.create(name: artist)
+            soundcloud_username = @soundcloud_username
+            @new_artist = Artist.create(name: artist, soundcloud_username: soundcloud_username)
             @evento.event_artists.build(artist: @new_artist)
           end
         end

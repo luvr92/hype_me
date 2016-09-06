@@ -1,4 +1,4 @@
-<div class="navbar-hype navbar-hype-black">
+<div class="navbar-hype navbar-hype-black navbar-hype-fixed">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-hype-brand" do %>
     <%= image_tag "hm_logo_bl.png" %>
@@ -53,12 +53,14 @@
     <% else %>
 
       <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-hype-item navbar-hype-link" %>
+
 
     <% end %>
 
     <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "SIGN UP"), "#", class: "navbar-hype-item navbar-hype-button btn" %>
+      <input type="text" name="loco" class="navbar-hype-search-input" placeholder="Insert a location">
+        <button class="navbar-hype-button-black btn" id="locat-search-btn">Search</button>
+
   </div>
 
   <!-- Dropdown list appearing on mobile only -->

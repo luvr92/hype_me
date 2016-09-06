@@ -1,3 +1,15 @@
+.event-infos, .event-lineup, .event-map {
+  height: calc(100vh - 100px);
+  padding-top: 70px;
+  background: #333745;
+}
+.event-map {
+  margin-bottom: 100px;
+  p {
+    padding-top: 20px;
+  }
+}
+
 .event-title {
   color: #F89D33;
   text-align: right;
@@ -72,7 +84,7 @@ em {
   font-size: 15px;
 }
 .map-container {
-  padding-bottom: 40px;
+  // padding-bottom: 40px;
 }
 .non-active-event {
   display: none;
@@ -114,3 +126,37 @@ em {
     height: auto;
   }
 }
+
+
+.event-banner {
+  background-size: cover;
+  height: 190px;
+  background-position-x: center;
+  background-position-y: top;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .event-banner-content {
+    padding: 60px;
+    text-align: center;
+  }
+  h2 {
+    font-size: 21px;
+    text-transform: uppercase;
+    font-weight: lighter;
+  }
+}
+.event-details-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  font-size: 20px;
+  padding-bottom: 0px;
+}
+.event-address {
+  padding: 30px;
+  span {
+    color: $orange;
+  }
+}
+

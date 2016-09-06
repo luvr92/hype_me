@@ -1,14 +1,14 @@
 <div class="mobile-navs">
   <div class="mobile-nav">
-    <%= link_to "#event-infos", class: "mobile-link" do %>
+    <%= link_to "#infos-#{index}", class: "mobile-link" do %>
       <i class="fa fa-info"></i>
       <p>Infos</p>
     <% end %>
   </div>
   <div class="mobile-nav">
-    <%= link_to "#map-section-#{index}", class: "mobile-link js-scroll", data: { target: "#map-section-#{index}" }  do %>
+    <%= link_to "#map-#{index}", class: "mobile-link" do %>
       <i class="fa fa-map-marker"></i>
-      <p>View map</p>
+      <p>View</p>
     <% end %>
   </div>
   <div class="mobile-nav">
@@ -18,7 +18,7 @@
     <% end %>
   </div>
   <div class="mobile-nav">
-    <%= link_to "#event-lineup", class: "mobile-link" do %>
+    <%= link_to "#lineup-#{index}", class: "mobile-link" do %>
       <i class="fa fa-users"></i>
       <p>Line up</p>
     <% end %>

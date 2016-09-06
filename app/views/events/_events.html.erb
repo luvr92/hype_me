@@ -1,7 +1,6 @@
 <style>
   .bg-dark-blue {
     background: #F4F4F4 !important;
-    padding-top: 70px;
   }
 </style>
 
@@ -10,16 +9,24 @@
   <% @events.each_with_index do |event, index| %>
     <div class="<%= (index == 0) ? "active-event" : "non-active-event"%>" id="displayed-event" data-index="<%= index%>" data-lat="<%= event.latitude%>" data-lng="<%= event.longitude%>">
 
-      <div id="event-infos">
-        <h2><%= event.title %></h2>
-        <%= cl_image_tag(event.photo, crop: :fit, class: "event-photo") %>
-        <p><%= event.club.name %></p>
-        <p><%= event.address %></p>
-        <p><%= event.opening_hours %></p>
-        <p><%= event.price %></p>
-        <p><%= event.description %></p>
-      </div>
-      <div id="event-lineup">
+
+      <div id="infos-<%= index %>" class="event-infos">
+        <div class="event-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.8) 0%, rgba(0,36,61,0.9) 50%), url('<%= cl_image_path(event.photo, crop: :fill, class: "event-photo") %>');">
+          <div class="event-banner-content">
+            <h2><%= event.title %></h2>
+          </div>
+        </div>
+        <div class="event-details">
+          <div class="event-details-header">
+            <p><%= event.opening_hours %></p>
+            <p><%= event.price %></p>
+          </div>
+          <p class="event-address">
+            <%= event.club.name %> - <span><%= event.address %></span>
+          </p>
+        </div>
+        </div>
+      <div id="lineup-<%= index %>" class="event-lineup">
         <ul>
           <% event.event_artists.all.each do |eve_artist| %>
             <li class="line-up-artist">- <%= eve_artist.artist.name %> <br>
@@ -29,9 +36,9 @@
           <% end %>
         </ul>
       </div>
-      <div id="event-map">
+      <div id="map-<%= index %>" class="event-map">
         <%= render 'map', event: event, index: index %>
-        <p>
+        <p class="text-center">
           <%= link_to ("Get directions"), "https://www.google.com/maps/dir/#{@user_lat},#{@user_lng}/#{event.latitude},#{event.longitude}", target:"_blank", class: "show-cta-btn" %>
         </p>
       </div>

@@ -34,9 +34,15 @@
   font-weight: lighter;
 }
 .line-up-list {
+  display: flex;
+  flex-direction: row;
   list-style-type: none;
   padding-left: 0;
   font-weight: lighter;
+}
+.line-up-artist {
+  flex-grow: 1;
+  flex-shrink: 2;
 }
 .soundcloud-link {
   color: #F89D33;

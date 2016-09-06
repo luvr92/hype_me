@@ -59,28 +59,14 @@
           <div class="container text-center">
             <div class="row line-up-container">
               <div class="col-xs-12">
+                <h4>Line up:</h4><br>
                 <ul class="infos line-up-list">
-                  <h4>Line up:</h4><br>
-                  <li>- DJ Fresh <br>
-                    <em class= "soundcloud-link">
-                    <i class="fa fa-headphones"></i>  Listen </em>
-                  </li>
-                  <li>- DJ Cool <br>
-                    <em class= "soundcloud-link">
-                    <i class="fa fa-headphones"></i>  Listen </em>
-                  </li>
-                  <li>- DJ Gigi <br>
-                    <em class= "soundcloud-link">
-                    <i class="fa fa-headphones"></i>  Listen </em>
-                  </li>
-                  <li>- DJ Jor <br>
-                    <em class= "soundcloud-link">
-                    <i class="fa fa-headphones"></i>  Listen </em>
-                  </li>
-                  <li>- DJ Knox <br>
-                    <em class= "soundcloud-link">
-                    <i class="fa fa-headphones"></i>  Listen </em>
-                  </li>
+                  <% event.event_artists.all.each do |eve_artist| %>
+                    <li class="line-up-artist">- <%= eve_artist.artist.name %> <br>
+                      <em class= "soundcloud-link">
+                      <i class="fa fa-headphones"></i>  Listen </em>
+                    </li>
+                  <% end %>
                 </ul><br>
                 <%= link_to ("Show full line up"), "#", class: "full-lineup-link" %> <!-- Expand to see full line up / or a pop up page?: -->
               </div>

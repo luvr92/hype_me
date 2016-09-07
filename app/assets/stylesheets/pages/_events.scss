@@ -5,7 +5,6 @@
   background: #333745;
 }
 
-
 // INFO PAGE
 .club-name {
   color: #F89D33;
@@ -57,6 +56,10 @@
     margin: 0;
   }
 }
+.green-line {
+  border-top: 1px solid #61D095;
+  margin: 0px;
+}
 .event-address {
   display: flex;
   align-items: center;
@@ -67,10 +70,6 @@
   span {
     color: #F89D33;
   }
-}
-.green-line {
-  border-top: 1px solid #61D095;
-  margin: 0px;
 }
 
 
@@ -116,21 +115,25 @@ em {
 }
 
 
-
 // MAP PAGE
 .event-map {
   margin-bottom: 100px;
   p {
-    padding-top: 20px;
+    padding: 20px;
+  }
+  span {
+    color: #F89D33;
   }
 }
 .map-container {
-  // padding-bottom: 40px;
+  margin-top: 15px;
+}
+.get-directions {
+  margin-top: 20px;
 }
 .non-active-event {
   display: none;
 }
-
 
 
 // PAGE ARROWS

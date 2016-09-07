@@ -73,12 +73,15 @@
 
 
     <!-- MAP PAGE -->
-      <div id="map-<%= index %>" class="event-map">
+    <div class="event-map text-center">
+      <p><%= event.club.name %> - <span><%= event.address %></span></p>
+      <div id="map-<%= index %>">
         <%= render 'map', event: event, index: index %>
-        <p class="text-center">
-          <%= link_to ("Get directions"), "https://www.google.com/maps/dir/#{@user_lat},#{@user_lng}/#{event.latitude},#{event.longitude}", target:"_blank", class: "show-cta-btn" %>
-        </p>
       </div>
+      <div class="get-directions text-center">
+        <p><%= link_to ("Get directions"), "https://www.google.com/maps/dir/#{@user_lat},#{@user_lng}/#{event.latitude},#{event.longitude}", target:"_blank", class: "show-cta-btn" %></p>
+      </div>
+    </div>
 
 
     <!-- MOBILE NAV -->

@@ -15,28 +15,41 @@
         <div id="infos-<%= index %>" class="event-infos">
 
           <!-- CLUB NAME -->
-          <div>
-            <h2><%= event.club.name %></h2>
+          <div class= 'club-name'>
+            <h3><%= event.club.name.upcase %></h3>
           </div>
+
+          <hr class= "orange-line-top"></hr>
 
           <!-- IMAGE -->
-          <div class="event-banner" style="background-image: url('<%= cl_image_path(event.photo, crop: :fill, class: "event-photo") %>');">
+          <div class="event-photo" style="background-image: url('<%= cl_image_path(event.photo, crop: :fill) %>');">
           </div>
+
+          <hr class= "orange-line-top"></hr>
 
           <!-- EVENT TITLE-->
-          <div>
-            <h3><%= event.title %></h3>
-          </div>
+          <div class="container">
+            <h3 class= "event-title text-center"><%= event.title %></h3>
 
-          <!-- EVENT DETAILS -->
-          <div class="event-details">
-            <div class="event-details-header">
-              <p><%= event.opening_hours %></p>
-              <p><%= event.price %></p>
+
+            <!-- EVENT DETAILS -->
+            <div class="event-details-info text-center">
+              <div class="event-time">
+                <p><span>Time:</span></p>
+                <h3><%= event.opening_hours %></h3>
+              </div>
+              <div class="event-price">
+                <p><span>Price:</span></p>
+                <h3><%= event.price %></h3>
+              </div>
             </div>
-            <p class="event-address">
-              <span><%= event.address %></span>
-            </p>
+          </div>
+            <hr class= "green-line"></hr>
+
+
+          <!-- EVENT ADDRESS -->
+          <div class= "event-address container text-center">
+            <p><%= event.club.name %> - <span><%= event.address %></span></p>
           </div>
       </div>
 
@@ -79,7 +92,6 @@
     <i><%= link_to (""), "#", class: "sidebar-arrow-right fa fa-arrow-right", id: "next-event-button" %></i>
     <i><%= link_to (""), "#", class: "sidebar-arrow-left fa fa-arrow-left", id: "prev-event-button" %></i>
   </div>
-
 </div>
 
 

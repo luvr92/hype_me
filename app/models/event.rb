@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   belongs_to :club
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
-  has_many :event_artists
+  has_many :event_artists, dependent: :destroy
   has_many :artists, through: :event_artists
 end
 

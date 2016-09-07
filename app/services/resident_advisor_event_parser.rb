@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
+require 'time'
 
 class ResidentAdvisorEventParser
   def initialize(url)
@@ -12,9 +13,9 @@ class ResidentAdvisorEventParser
     @doc = Nokogiri::HTML(open(@url))
     parse_details
     parse_flyer
+    parse_title
     parse_line_up
     parse_description
-    parse_sc_username
 
     return @event
   end
@@ -26,6 +27,10 @@ class ResidentAdvisorEventParser
       hours = info.at("ul li").text.to_s # OPENING AND CLOSING HOURS
       hours = hours.scan(/(\d\d\D\d\d\s\D\s\d\d\D\d\d)/)
       @event[:hours] = hours.flatten.join
+
+
+      date = info.at("ul li a[href]").text.to_s
+      @event[:event_date] = Date.strptime(date, "%d %B %Y")
 
       venue = info.at("ul li:nth-child(2) a.cat-rev") # VENUE NAME
       if venue == nil
@@ -50,9 +55,28 @@ class ResidentAdvisorEventParser
     end
   end
 
+  def parse_title
+    @doc.search("#sectionHead").each do |info|
+      @event[:title] = info.at("h1").text.to_s
+    end
+  end
+
   def parse_line_up
-    @doc.search("#event-item").each do |info|
-      @event[:line_up] << info.at("div:nth-child(3) p").text.to_s.gsub("\r\n", ",").split(",")
+    @event[:line_up] = []
+    @doc.css('.lineup').first.children.reject { |c| c.name == 'br' || c.content.strip.blank? }.each do |node|
+      if node.name == "a"  # Link to DJ profile
+        dj_name = node.content.strip
+        dj_parser = ResidentAdvisorDjParser.new(node.attributes["href"].value)
+        soundcloud_username = dj_parser.parse
+      else
+        dj_name = node.content.strip
+        soundcloud_username = nil
+      end
+
+      @event[:line_up] << {
+        name: dj_name,
+        soundlcoud: soundcloud_username
+      }
     end
   end
 
@@ -63,24 +87,6 @@ class ResidentAdvisorEventParser
       event_description.gsub!("\r",'')
       event_description.gsub!("\t",'')
       @event[:description] = event_description.strip
-    end
-  end
-
-  def parse_sc_username
-    dj_names = []
-
-    dj_names = @doc.css('div.left a').map { |link| link['href'] }
-    dj_names = dj_names[0...-1]
-
-    dj_names.map do |dj|
-      dj.gsub!("/dj/",'')
-    end
-
-    @event[:line_up_soundcloud] = []
-    dj_names.map do |dj_name|
-      url = "https://www.residentadvisor.net/dj/#{dj_name}"
-      parser = ResidentAdvisorDjParser.new(url)
-      @event[:line_up_soundcloud] << parser.parse
     end
   end
 end

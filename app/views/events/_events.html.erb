@@ -4,28 +4,45 @@
   }
 </style>
 
+<!-- NAVBAR -->
 <%= render 'shared/navbar_black' %>
-<div class="all-the-events">
-  <% @events.each_with_index do |event, index| %>
-    <div class="<%= (index == 0) ? "active-event" : "non-active-event"%>" id="displayed-event" data-index="<%= index%>" data-lat="<%= event.latitude%>" data-lng="<%= event.longitude%>">
+
+<!-- INFO PAGE -->
+  <div class="all-the-events">
+    <% @events.each_with_index do |event, index| %>
+      <div class="<%= (index == 0) ? "active-event" : "non-active-event"%>" id="displayed-event" data-index="<%= index%>" data-lat="<%= event.latitude%>" data-lng="<%= event.longitude%>">
+
+        <div id="infos-<%= index %>" class="event-infos">
+
+          <!-- CLUB NAME -->
+          <div>
+            <h2><%= event.club.name %></h2>
+          </div>
+
+          <!-- IMAGE -->
+          <div class="event-banner" style="background-image: url('<%= cl_image_path(event.photo, crop: :fill, class: "event-photo") %>');">
+          </div>
+
+          <!-- EVENT TITLE-->
+          <div>
+            <h3><%= event.title %></h3>
+          </div>
+
+          <!-- EVENT DETAILS -->
+          <div class="event-details">
+            <div class="event-details-header">
+              <p><%= event.opening_hours %></p>
+              <p><%= event.price %></p>
+            </div>
+            <p class="event-address">
+              <span><%= event.address %></span>
+            </p>
+          </div>
+      </div>
 
 
-      <div id="infos-<%= index %>" class="event-infos">
-        <div class="event-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.8) 0%, rgba(0,36,61,0.9) 50%), url('<%= cl_image_path(event.photo, crop: :fill, class: "event-photo") %>');">
-          <div class="event-banner-content">
-            <h2><%= event.title %></h2>
-          </div>
-        </div>
-        <div class="event-details">
-          <div class="event-details-header">
-            <p><%= event.opening_hours %></p>
-            <p><%= event.price %></p>
-          </div>
-          <p class="event-address">
-            <%= event.club.name %> - <span><%= event.address %></span>
-          </p>
-        </div>
-        </div>
+    <!-- LINEUP PAGE -->
+      <!-- LINEUP -->
       <div id="lineup-<%= index %>" class="event-lineup">
         <ul>
           <% event.event_artists.all.each do |eve_artist| %>
@@ -34,8 +51,15 @@
               <i class="fa fa-headphones"></i>  Listen </em>
             </li>
           <% end %>
+          <!-- DESCRIPTION -->
+          <p class="event-description">
+            <%= event.description %>
+          </p>
         </ul>
       </div>
+
+
+    <!-- MAP PAGE -->
       <div id="map-<%= index %>" class="event-map">
         <%= render 'map', event: event, index: index %>
         <p class="text-center">
@@ -43,11 +67,14 @@
         </p>
       </div>
 
+
+    <!-- MOBILE NAV -->
       <%= render "shared/mobile_nav", index: index %>
     </div>
   <% end %>
 
-  <!-- Fixed page arrows -->
+
+<!-- FIXED ARROWS -->
   <div class= "arrows">
     <i><%= link_to (""), "#", class: "sidebar-arrow-right fa fa-arrow-right", id: "next-event-button" %></i>
     <i><%= link_to (""), "#", class: "sidebar-arrow-left fa fa-arrow-left", id: "prev-event-button" %></i>

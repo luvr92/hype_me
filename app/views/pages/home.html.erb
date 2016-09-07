@@ -1,15 +1,12 @@
 <%= render 'shared/navbar_white' %>
 <div class="se-pre-con hidden"></div>
-<div class="wrapper">
+<div class="wrapper" id="home">
   <div class="container text-center home-container">
-    <div class="row">
-      <div class="col-xs-12">
-        <h1 class= "intro-copy">Discover club events local to you</h1>
+      <div class="home-content">
+        <h1 class= "intro-copy">Go clubbing</h1>
+        <%= link_to events_path, id: "hype-btn", class: "pulse" do %>
+          🤘
+        <% end %>
       </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <%= link_to t("HYPE ME!"), events_path, id: "hype-btn" %>
-        </div>
-      </div>
-    </div>
   </div>
+</div>

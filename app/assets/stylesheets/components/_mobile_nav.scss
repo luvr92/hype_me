@@ -5,18 +5,19 @@
   display: flex;
   justify-content: space-around;
   text-align: center;
-  background: white;
+  background: #191B22;
   align-items: center;
   height: 100px;
+  padding-top: 10px;
 }
 .mobile-nav i {
   font-size: 25px;
-  color: $orange;
+  color: #61D095;
 }
 .mobile-nav a p {
   font-size: 15px;
-  color: $orange;
-  opacity: 0.5;
+  color: white;
+  opacity: 0.75;
   font-weight: lighter;
 }
 .mobile-nav a:hover, .mobile-nav a:active, .mobile-nav a:focus {

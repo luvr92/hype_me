@@ -13,7 +13,7 @@ $('#hype-btn').click(function(e) {
     setTimeout(function() {
       // 6. Making the AJAX call to retrieve event list for (lat, lng)
       $.getScript("/events?lat=" + position.coords.latitude + "&lng="+ position.coords.longitude);
-    }, 3000);
+    }, 500);
   };
 
   // 3 (bis). In case the user refuses to be geolocalized

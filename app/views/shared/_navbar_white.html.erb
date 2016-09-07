@@ -52,24 +52,23 @@
 
     <% else %>
 
-      <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-hype-item navbar-hype-link" %>
+
 
     <% end %>
 
     <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "SIGN UP"), "#", class: "navbar-hype-item navbar-hype-button btn" %>
+
+
+    <input type="text" name="loco" class="search-box" style="color: black;" placeholder="Insert a location">
+    <button class="navbar-hype-item navbar-hype-button btn" id="locat-search-btn">Search</button>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-hype-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-hype-dropdown-menu">
-        <li><a href="#">Search</a></li>
-        <li><a href="#">Club info</a></li>
-        <li><a href="#">Profile</a></li>
-      </ul>
+    <i class="fa fa-search dropdown-toggle" id="search-icon-to-drop" data-toggle="dropdown"></i>
+    <div id="mobile-locat-search-form" class="hidden">
+      <input type="text" name="loco" id="hidden-input" class="navbar-hype-search-input" placeholder="location">
+      <button class="navbar-hype-button-black btn" id="locat-search-btn-dropdown">Search</button>
     </div>
   </div>
 </div>

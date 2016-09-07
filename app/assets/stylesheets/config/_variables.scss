@@ -7,14 +7,21 @@ $base-font: "Open Sans", "Helvetica", "sans-serif";
 $header-font: "Raleway", "Helvetica", "sans-serif";
 
 // Local fonts (uncomment following lines)
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+@font-face {
+  font-family: "Avenir";
+  src: font-url('AvenirMedium.eot');
+  src: font-url('AvenirMedium.eot?#iefix') format('embedded-opentype'),
+       font-url('AvenirMedium.woff') format('woff'),
+       font-url('AvenirMedium.ttf') format('truetype')
+}
+@font-face {
+  font-family: "Avenir";
+  font-weight: bold;
+  src: font-url('AvenirBold.eot');
+  src: font-url('AvenirBold.eot?#iefix') format('embedded-opentype'),
+       font-url('AvenirBold.woff') format('woff'),
+       font-url('AvenirBold.ttf') format('truetype')
+}
 
 // Font-size and line-height
 $base-size: 16px;

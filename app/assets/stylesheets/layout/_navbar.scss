@@ -3,7 +3,7 @@
   background: transparent;
   transition: all 0.3s ease;
   display: flex;
-  height: 70px;
+  min-height: 70px;
   padding: 0px 30px;
   align-items: center;
   justify-content: space-between;
@@ -70,14 +70,16 @@
 }
 .navbar-hype-button-black {
   margin-left: 10px;
-  padding: 0 20px;
+  padding: 8px 10px 10px 10px;
   border-radius: 20em;
-  line-height: 40px;
+  line-height: 20px;
   background: #040F0F;
   color: #EEEEEE;
   font-size: 12px;
   letter-spacing: 3px;
   border: 2px solid #EEEEEE;
+  width: 75px;
+  text-align: center;
 }
 .navbar-hype-button-black:hover {
   color: #040F0F;
@@ -111,12 +113,13 @@
   transition: all 0.15s ease;
   line-height: 40px;
   font-weight: lighter;
-  color: #666666;
+  color: black;
   border: 1px solid #E6E6E6;
   border-radius: 5px;
   padding: 0 10px;
   font-size: 14px;
   outline: none;
+  width: 75px;
 }
 .navbar-hype-search-input:focus  {
   border: 1px solid #CCCCCC;
@@ -152,3 +155,8 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+#mobile-locat-search-form {
+  display: inline-block;
+}
+
+

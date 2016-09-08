@@ -48,9 +48,9 @@ class ResidentAdvisorEventParser
 
   def parse_flyer
     @doc.search(".flyer").each do |info|
-      event_flyer = info.at("a img[src]") # .values[0]
-      if event_flyer
-        @event[:flyer] = "https://www.residentadvisor.net" + event_flyer.values[0]
+      @event_flyer = info.at("a img[src]") # .values[0]
+      if @event_flyer
+        @event[:flyer] = "https://www.residentadvisor.net" + @event_flyer.values[0]
       end
     end
   end

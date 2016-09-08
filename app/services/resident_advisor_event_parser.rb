@@ -75,7 +75,7 @@ class ResidentAdvisorEventParser
 
       @event[:line_up] << {
         name: dj_name,
-        soundlcoud: soundcloud_username
+        soundcloud: soundcloud_username
       }
     end
   end

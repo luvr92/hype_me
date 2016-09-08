@@ -1,11 +1,11 @@
 class ImportEventsJob < ApplicationJob
-  def perform(city_id)
+  def perform(city_id, date)
     old_logger = ActiveRecord::Base.logger
     ActiveRecord::Base.logger = nil
 
 
     puts "Importing events for city #{city_id}..."
-    crawler = ResidentAdvisorCrawler.new(city_id, Date.today)
+    crawler = ResidentAdvisorCrawler.new(city_id, date)
     urls = crawler.crawl
     puts "Found #{urls.count} events..."
 
@@ -14,12 +14,6 @@ class ImportEventsJob < ApplicationJob
 
       parser = ResidentAdvisorEventParser.new(url)
       event_info = parser.parse
-      p event_info[:line_up]  # Array
-
-      [
-        { name: 'Artist name', soundcloud: 'toto' },
-        { name: 'Artist name 2', soundcloud: 'tit' },
-      ]
 
       print ", importing #{event_info[:title]}..."
 

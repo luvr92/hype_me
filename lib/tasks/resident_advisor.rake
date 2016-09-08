@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'nokogiri'
 require 'time'
-require 'pry-byebug'
+# require 'pry-byebug'
 
 namespace :resident_advisor do
   task import_today: :environment do

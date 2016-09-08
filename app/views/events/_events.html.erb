@@ -62,11 +62,10 @@
               <ul>
                 <% event.event_artists.all.each do |eve_artist| %>
                 <li class="line-up-artist"><h3> <%= eve_artist.artist.name %> </h3>
-                  –
                   <% if eve_artist.artist.soundcloud_username %>
-                    <em class= "soundcloud-link">
+
                       <%= raw eve_artist.artist.soundcloud_widget %>
-                    </em>
+
                   <% end %>
                 </li>
                 <% end %>

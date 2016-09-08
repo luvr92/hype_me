@@ -50,24 +50,30 @@
 
     <!-- LINEUP PAGE -->
       <!-- LINEUP -->
-      <div id="lineup-<%= index %>" class="event-lineup">
-        <ul>
-          <% event.event_artists.all.each do |eve_artist| %>
-            <li class="line-up-artist">- <%= eve_artist.artist.name %> <br>
-              <% if eve_artist.artist.soundcloud_username %>
-                <em class= "soundcloud-link">
-                <i class="fa fa-headphones"></i>  Listen </em>
-                <%= raw eve_artist.artist.soundcloud_widget %>
-              <% end %>
-            </li>
-          <% end %>
-          <!-- DESCRIPTION -->
-          <p class="event-description">
-            <%= event.description %>
-          </p>
-        </ul>
-      </div>
+        <div id="lineup-<%= index %>" class="event-lineup">
+          <div class="container text-center eventevent">
+            <p><span>Line-up</span></p>
+              <ul>
+                <% event.event_artists.all.each do |eve_artist| %>
+                <li class="line-up-artist"><h3> <%= eve_artist.artist.name %> </h3>
+                  –
+                  <% if eve_artist.artist.soundcloud_username %>
+                    <em class= "soundcloud-link">
+                      <%= raw eve_artist.artist.soundcloud_widget %>
+                    </em>
+                  <% end %>
+                </li>
+                <% end %>
+              </ul>
 
+            <!-- DESCRIPTION -->
+            <p><span>Description</span></p>
+            <h4 class="event-description"><%= event.description %></h4>
+
+          </div>
+        </div>
+
+<!-- <i class="fa fa-headphones"></i> -->
 
     <!-- MAP PAGE -->
     <div class="event-map text-center">

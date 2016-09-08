@@ -26,6 +26,16 @@
   border: 1px solid white;
   text-decoration: none;
 }
+
+#locat-search-btn-dropdown:active {
+  text-decoration: none;
+  color: white;
+}
+
+#locat-search-btn-dropdown:focus {
+  text-decoration: none;
+  color: white;
+}
 // #hype-btn:hover {
 //   text-decoration: none;
 //   color: white;

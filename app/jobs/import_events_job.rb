@@ -39,7 +39,7 @@ class ImportEventsJob < ApplicationJob
       event.opening_hours = event_info[:hours]
       event.address = event_info[:venue_address]
       event.price = event_info[:price]
-      event.photo = event_info[:flyer]
+      event.remote_photo_url = event_info[:flyer]
       event.description = event_info[:description]
       event.event_url = url
       event.date = event_info[:event_date]

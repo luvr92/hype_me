@@ -84,7 +84,7 @@
   list-style-type: none;
   padding-left: 0px;
   h3 {
-    font-size: 15px;
+    font-size: 18px;
     margin-top: 5px;
   }
 }
@@ -99,30 +99,22 @@ em {
   font-style: normal;
   font-size: 12px;
 }
-// .full-lineup-link {
-//   color: #F89D33;
-//   text-decoration: none;
-//   font-size: 14px;
-//   border: 1px solid #F89D33;
-//   padding: 5px;
-// }
-.full-lineup-link:hover {
-  color: #61D095;
-  text-decoration: none;
-  border: 1px solid #61D095;
-}
-.event-description {
-  margin-bottom: 0;
-  font-size: 18px;
-  font-weight: lighter;
-  padding: 10px 20px;
-}
-.eventevent {
+.event-container {
+  margin-top: 40px;
+  ul {
+    padding-left: 0;
+  }
   span {
     color: #F89D33;
     font-size: 13px;
     padding-bottom: 5px;
   }
+}
+.event-description {
+  margin-bottom: 0;
+  font-size: 17px;
+  font-weight: lighter;
+  padding: 10px 30px;
 }
 
 // MAP PAGE

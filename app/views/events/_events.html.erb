@@ -22,8 +22,9 @@
           <hr class= "orange-line-top"></hr>
 
           <!-- IMAGE -->
-          <div class="event-photo" style="background-image: url('<%= cl_image_path(event.photo, crop: :fill) %>');">
-          </div>
+
+          <div class="event-photo" style="background-image: url('<%= event.photo.file ? cl_image_path(event.photo, crop: :fill) : 'http://res.cloudinary.com/luigi-grazioli/image/upload/v1473325198/clubbing_vx3eul.jpg' %>');">
+
 
           <hr class= "orange-line-top"></hr>
 

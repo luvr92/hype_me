@@ -1,25 +1,30 @@
 #hype-btn {
-    display: inline-block;
-    text-align: center;
-    line-height: 30px;
-    background-color: white;
-    opacity: 0.25px;
-    border-radius: 50%;
-    position: relative;
-    margin: 10px;
-    width: 125px;
-    border: 2px solid white;
-    padding: 30px;
-    transition: background 0.3s ease;
-    letter-spacing: 3px;
-    font-size: 18px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin: auto;
-    font-size: 80px;
+  display: inline-block;
+  text-align: center;
+  line-height: 30px;
+  background-color: white;
+  opacity: 0.25px;
+  border-radius: 50%;
+  position: relative;
+  margin: 10px;
+  width: 125px;
+  border: 2px solid white;
+  padding: 30px;
+  transition: background 0.3s ease;
+  letter-spacing: 3px;
+  font-size: 18px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: auto;
+  font-size: 80px;
+}
+.search-button {
+  background-color: none;
+  border: 1px solid white;
+  text-decoration: none;
 }
 // #hype-btn:hover {
 //   text-decoration: none;
@@ -52,7 +57,6 @@
   color: white;
   text-decoration: none;
 }
-
 .main-photo {
   height: 100px;
   width: 200px;

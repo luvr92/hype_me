@@ -24,7 +24,7 @@
           <!-- IMAGE -->
 
           <div class="event-photo" style="background-image: url('<%= event.photo.file ? cl_image_path(event.photo, crop: :fill) : 'http://res.cloudinary.com/luigi-grazioli/image/upload/v1473325198/clubbing_vx3eul.jpg' %>');">
-
+          </div>
 
           <hr class= "orange-line-top"></hr>
 
@@ -44,13 +44,6 @@
                 <h3><%= event.price %></h3>
               </div>
             </div>
-          </div>
-            <hr class= "green-line"></hr>
-
-
-          <!-- EVENT ADDRESS -->
-          <div class= "event-address container text-center">
-            <p><%= event.club.name %> - <span><%= event.address %></span></p>
           </div>
       </div>
 

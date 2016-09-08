@@ -12,15 +12,15 @@
     <% end %>
   </div>
   <div class="mobile-nav">
-    <%= link_to event.event_url, class: "mobile-link", target: "blank" do %>
-      <i class="fa fa-dollar"></i>
-      <p>Buy now</p>
-    <% end %>
-  </div>
-  <div class="mobile-nav">
     <%= link_to "#lineup-#{index}", class: "mobile-link" do %>
       <i class="fa fa-users"></i>
       <p>Line up</p>
+    <% end %>
+  </div>
+  <div class="mobile-nav">
+    <%= link_to event.event_url, class: "mobile-link", target: "blank" do %>
+      <i class="fa fa-dollar"></i>
+      <p>Buy now</p>
     <% end %>
   </div>
 </div>

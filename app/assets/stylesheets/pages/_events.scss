@@ -9,9 +9,9 @@
 .club-name {
   color: #F89D33;
   text-align: right;
-  margin: -15px 0;
+  margin: -10px 0 -18px 0;
   padding: 0 10px 0 0;
-  font-weight: lighter;
+  font-weight: 600;
 }
 .orange-line-top {
   border-top: 2px solid #F89D33;
@@ -33,15 +33,21 @@
   justify-content: center;
   font-size: 30px;
   font-weight: lighter;
-  padding: 0 30px;
+  padding: 0 60px;
   margin-top: 20px;
   margin-bottom: 10px;
   height: 140px;
 }
 .event-details-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   display: flex;
   justify-content: space-around;
+  padding: 10px 0;
+  // background-color: rgba(0,0,0, 0.6);
   h3 {
+    font-weight: lighter;
     font-size: 20px;
     margin-top: 5px;
   }
@@ -112,9 +118,11 @@ em {
 }
 .event-description {
   margin-bottom: 0;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: lighter;
-  padding: 10px 30px;
+  padding: 10px 45px;
+  line-height: 2rem;
+  opacity: 0.8;
 }
 
 // MAP PAGE
@@ -141,24 +149,24 @@ em {
 
 
 // PAGE ARROWS
-.sidebar-arrow-left {
+
+.sidebar-arrow-left,
+.sidebar-arrow-right {
   position: absolute;
-  top: 320px;
-  left: 10px;
-  position: fixed;
-  font-size: 18px;
+  background-color: #F89D33;
+  padding: 13px;
+  font-size: 26px;
+  top: 63px;
   font-weight: lighter;
   color: #EEEEEE;
   list-style-type: none;
 }
+
+.sidebar-arrow-left {
+  left: 10px;
+}
 .sidebar-arrow-right {
-  position: absolute;
-  top: 320px;
   right: 10px;
-  position: fixed;
-  font-size: 18px;
-  color: #EEEEEE;
-  font-weight: lighter;
 }
 .fa-arrow-left:hover {
     color: #F89D33;

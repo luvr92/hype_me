@@ -1,5 +1,4 @@
 .mobile-navs {
-
   border-top: 1px solid #61D095;position: fixed;
   bottom: 0;
   width: 100%;
@@ -23,4 +22,8 @@
 }
 .mobile-nav a:hover, .mobile-nav a:active, .mobile-nav a:focus {
   text-decoration: none;
+}
+
+.mobile-navs.active {
+  color: #F89D33;
 }

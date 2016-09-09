@@ -21,11 +21,11 @@ handler.buildMap({
 });
 
 $(document).ready(function() {
-  $('#next-event-button').click(function() {
+  $('.next-event-button').click(function() {
     nextEvent();
   });
 
-  $('#prev-event-button').click(function() {
+  $('.prev-event-button').click(function() {
     previousEvent();
   });
 });
@@ -35,6 +35,11 @@ var displayedEvent = $(".event-wrapper").each(function(i, item){
 });
 
 function nextEvent() {
+  if ($(".event-wrapper:last-child").hasClass("active-event")) {
+    // Cannot swipe right, we are already on the first event!
+    return;
+  }
+
   var $nextEvent = $('.active-event').removeClass("active-event").addClass("non-active-event").next();
   $nextEvent.removeClass("non-active-event").addClass("active-event");
 
@@ -63,6 +68,11 @@ function nextEvent() {
 };
 
 function previousEvent() {
+  if ($('.active-event').data("index") === 0) {
+    // Cannot swipe left, we are already on the first event!
+    return;
+  }
+
   var $previousEvent = $('.active-event').removeClass("active-event").addClass("non-active-event").prev()
   $previousEvent.removeClass("non-active-event").addClass("active-event");
 

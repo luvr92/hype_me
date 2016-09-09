@@ -33,13 +33,13 @@
             <h3 class= "event-title text-center"><%= event.title %></h3>
             <!-- ARROWS -->
             <div class= "arrows">
-              <% if index > 0 && index < @events.size - 2 %>
-                <i><%= link_to (""), "#", class: "sidebar-arrow-right fa fa-angle-right", id: "next-event-button" %></i>
-                <i><%= link_to (""), "#", class: "sidebar-arrow-left fa fa-angle-left", id: "prev-event-button" %></i>
+              <% if index > 0 && index < @events.size - 1 %>
+                <i><%= link_to (""), "#", class: "sidebar-arrow-right fa fa-angle-right next-event-button" %></i>
+                <i><%= link_to (""), "#", class: "sidebar-arrow-left fa fa-angle-left prev-event-button" %></i>
               <% elsif index == 0 %>
-                <i><%= link_to (""), "#", class: "sidebar-arrow-right fa fa-angle-right", id: "next-event-button" %></i>
+                <i><%= link_to (""), "#", class: "sidebar-arrow-right fa fa-angle-right next-event-button" %></i>
               <% else %>
-                <i><%= link_to (""), "#", class: "sidebar-arrow-left fa fa-angle-left", id: "prev-event-button" %></i>
+                <i><%= link_to (""), "#", class: "sidebar-arrow-left fa fa-angle-left prev-event-button" %></i>
               <% end %>
             </div>
 

@@ -59,6 +59,18 @@
         </div>
       </div>
 
+<!-- <i class="fa fa-headphones"></i> -->
+
+    <!-- MAP PAGE -->
+    <div class="event-map text-center" id="map-container-<%= index %>">
+      <p><%= event.club.name %> - <span><%= event.address %></span></p>
+      <div id="map-<%= index %>">
+        <%= render 'map', event: event, index: index %>
+      </div>
+      <div class="get-directions text-center">
+        <p><%= link_to ("Get directions"), "https://www.google.com/maps/dir/#{@user_lat},#{@user_lng}/#{event.latitude},#{event.longitude}", target:"_blank", class: "show-cta-btn" %></p>
+      </div>
+    </div>
 
     <!-- LINEUP PAGE -->
       <!-- LINEUP -->
@@ -84,18 +96,6 @@
           </div>
         </div>
 
-<!-- <i class="fa fa-headphones"></i> -->
-
-    <!-- MAP PAGE -->
-    <div class="event-map text-center" id="map-container-<%= index %>">
-      <p><%= event.club.name %> - <span><%= event.address %></span></p>
-      <div id="map-<%= index %>">
-        <%= render 'map', event: event, index: index %>
-      </div>
-      <div class="get-directions text-center">
-        <p><%= link_to ("Get directions"), "https://www.google.com/maps/dir/#{@user_lat},#{@user_lng}/#{event.latitude},#{event.longitude}", target:"_blank", class: "show-cta-btn" %></p>
-      </div>
-    </div>
 
 
     <!-- MOBILE NAV -->

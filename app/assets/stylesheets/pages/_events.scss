@@ -55,7 +55,7 @@
 }
 .event-details-info {
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -81,7 +81,6 @@
   width: 50%;
 }
 .event-price {
-  padding-left: 10px;
   margin-right: 0px;
   width: 50%;
   h3 {
@@ -170,7 +169,7 @@ em {
   background-color: #F89D33;
   padding: 13px;
   font-size: 26px;
-  top: 63px;
+  top: 55px;
   font-weight: lighter;
   color: #EEEEEE;
   list-style-type: none;

@@ -1,16 +1,22 @@
 // GENERAL
-.event-infos, .event-lineup, .event-map {
-  height: calc(100vh - 85px);
+.event-infos, .event-lineup {
+  height: calc(100vh - 80px);
   padding-top: 70px;
   background: #333745;
 }
+.event-map {
+  height: calc(100vh - 80px);
+  padding-top: 20px;
+  background: #333745;
+}
+
 
 // INFO PAGE
 .club-name {
   color: #F89D33;
   text-align: right;
   margin: -10px 0 -18px 0;
-  padding: 0 10px 0 0;
+  padding: 0 0 0 0;
   font-weight: 600;
 }
 .orange-line-top {
@@ -34,7 +40,7 @@
   font-size: 30px;
   font-weight: lighter;
   padding: 0 60px;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 10px;
   height: 140px;
 }
@@ -127,21 +133,21 @@ em {
 
 // MAP PAGE
 .event-map {
-  margin-bottom: 100px;
   p {
-    padding: 20px;
-    font-size: 17px;
+    padding: 0 20px 10px 20px;
+    font-size: 15px;
   }
   span {
     color: #F89D33;
-    font-size: 17px;
+    font-size: 15px;
   }
 }
 .map-container {
-  margin-top: 15px;
+  margin-top: 10px;
 }
 .get-directions {
-  margin-top: 5px;
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
 .non-active-event {
   display: none;

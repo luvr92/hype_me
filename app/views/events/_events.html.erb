@@ -87,7 +87,7 @@
 <!-- <i class="fa fa-headphones"></i> -->
 
     <!-- MAP PAGE -->
-    <div class="event-map text-center">
+    <div class="event-map text-center" id="map-container-<%= index %>">
       <p><%= event.club.name %> - <span><%= event.address %></span></p>
       <div id="map-<%= index %>">
         <%= render 'map', event: event, index: index %>

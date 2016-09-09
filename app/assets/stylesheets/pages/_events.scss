@@ -1,12 +1,17 @@
 // GENERAL
-.event-infos, .event-lineup {
+.event-lineup {
+  min-height: calc(100vh - 80px);
+  padding-top: 70px;
+  background: #333745;
+}
+.event-infos {
   height: calc(100vh - 80px);
   padding-top: 70px;
   background: #333745;
 }
 .event-map {
-  height: calc(100vh - 80px);
-  padding-top: 20px;
+  height: calc(100vh);
+  padding-top: 80px;
   background: #333745;
 }
 

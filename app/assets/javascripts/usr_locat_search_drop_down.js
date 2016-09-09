@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   $(document).on("click", '#locat-search-btn-dropdown', function() {
-    var query = $('#hidden-input').val();
+    var query = $('.navbar-hype-search-input').val();
     $.ajax({
       type: "GET",
       url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + query + "&key=AIzaSyCJWsMsY6lRxdekum1JAg4BDvao57elMw0",

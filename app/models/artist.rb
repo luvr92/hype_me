@@ -4,5 +4,7 @@ class Artist < ApplicationRecord
     track_url = "https://soundcloud.com/#{soundcloud_username}"
     embed_info = client.get('/oembed', :url => track_url, maxheight: 77)
     embed_info['html']
+  rescue SoundCloud::ResponseError
+    nil
   end
 end

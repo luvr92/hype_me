@@ -1,3 +1,5 @@
+# THIS FILE IS NO LONGER BEING USED, REFACTORED IN SERVICES AND JOBS
+
 require 'open-uri'
 require 'nokogiri'
 require 'time'
